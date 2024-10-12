@@ -1,59 +1,83 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace SunkenSouls
 {
     public class PlayerController : MonoBehaviour
     {
-        public float moveSpeed;
-        public float jumpForce;
-        public CharacterController controller;
-        public Camera playerCamera; // Reference to the player's camera
+        public float moveSpeed = 5f; // Player movement speed
+        public float jumpForce = 8f; // Jump force
+        public CharacterController controller; // Reference to the CharacterController
 
-        private Vector3 moveDirection;
-        private float verticalVelocity; // Separate vertical velocity
-        private float gravity = -9.81f; // Earth's gravity
+        private Vector3 moveDirection; // Movement direction
+        private float verticalVelocity; // Vertical velocity (for jumping and gravity)
+        private float gravity = -9.81f; // Gravity constant
+        public Transform cameraTransform; // Reference to the camera's Transform
 
-        // Start is called before the first frame update
+
+        //maximum number of possible pick ups
+        private int numPickUps = 7;
+
+        // to store the number of pick ups collected
+        private int pickupcount;
+
+        // dislpay the collectibles collected text
+        public TextMeshProUGUI collectedPickUps;
+        public TextMeshProUGUI winText;
+
         void Start()
         {
+            // setting the number of collectibles to be collected, which relies on the number of collectibles with a tag of 'PickUp'
+            //numPickUps = GameObject.FindGameObjectsWithTag("PickUp").Length;
+
+            pickupcount = 0;
             controller = GetComponent<CharacterController>();
-            // Ensure to assign the camera if it's not assigned in the inspector
-            if (playerCamera == null)
+
+            // Assign the main camera's Transform if it's not already assigned
+            if (cameraTransform == null)
             {
-                playerCamera = Camera.main;
+                cameraTransform = Camera.main.transform;
             }
         }
 
-        // Update is called once per frame
+        void OnTriggerEnter(Collider other)
+        {
+            if(other.gameObject.tag == "PickUp")
+            {
+                other.gameObject.SetActive(false);
+                pickupcount++;
+                SetPickUpsCollectedText();
+            }
+        }
+
         void Update()
         {
-            // Get input
+            // Get input for movement
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 
-            // Get camera forward and right vectors
-            Vector3 forward = playerCamera.transform.forward;
-            Vector3 right = playerCamera.transform.right;
+            // Get the forward and right directions relative to the camera
+            Vector3 forward = cameraTransform.forward;
+            Vector3 right = cameraTransform.right;
 
-            // Flatten the vectors to ignore the y-axis
+            // Flatten the vectors to avoid vertical movement (y = 0)
             forward.y = 0;
             right.y = 0;
-
             forward.Normalize();
             right.Normalize();
 
-            // Calculate the move direction relative to the camera
-            moveDirection = (right * horizontalInput + forward * verticalInput) * moveSpeed;
+            // Calculate the movement direction relative to the camera's orientation
+            moveDirection = (forward * verticalInput + right * horizontalInput) * moveSpeed;
 
-            // Check if the player is on the ground
+            // Handle jumping and gravity
             if (controller.isGrounded)
             {
-                // If grounded, reset the vertical velocity
-                verticalVelocity = -1f; // Slightly negative to ensure the player stays grounded
+                // Reset vertical velocity when grounded
+                verticalVelocity = -1f;
 
-                // Handle jumping
+                // Jump if the player presses the jump button
                 if (Input.GetButtonDown("Jump"))
                 {
                     verticalVelocity = jumpForce;
@@ -61,15 +85,24 @@ namespace SunkenSouls
             }
             else
             {
-                // Apply gravity over time when not grounded
+                // Apply gravity when not grounded
                 verticalVelocity += gravity * Time.deltaTime;
             }
 
-            // Add the vertical velocity to moveDirection
+            // Apply vertical velocity (gravity and jump) to the movement direction
             moveDirection.y = verticalVelocity;
 
-            // Move the controller
+            // Move the player
             controller.Move(moveDirection * Time.deltaTime);
+        }
+
+        private void SetPickUpsCollectedText()
+        {
+            collectedPickUps.text = "Collected Pick Ups: " + pickupcount.ToString();
+            if (pickupcount >= numPickUps)
+            {
+                winText.text = "Congratulations! You completed this level!";
+            }
         }
     }
 }
