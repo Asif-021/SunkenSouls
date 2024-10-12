@@ -18,7 +18,7 @@ namespace SunkenSouls
 
 
         //maximum number of possible pick ups
-        private int numPickUps = 7;
+        private int numPickUps;
 
         // to store the number of pick ups collected
         private int pickupcount;
@@ -30,7 +30,7 @@ namespace SunkenSouls
         void Start()
         {
             // setting the number of collectibles to be collected, which relies on the number of collectibles with a tag of 'PickUp'
-            //numPickUps = GameObject.FindGameObjectsWithTag("PickUp").Length;
+            numPickUps = GameObject.FindGameObjectsWithTag("PickUp").Length;
 
             pickupcount = 0;
             controller = GetComponent<CharacterController>();
