@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.IO;
 using UnityEngine;
 using static System.IO.Path;
@@ -30,3 +31,4 @@ public static class Setup
         }
     }
 }
+#endif
