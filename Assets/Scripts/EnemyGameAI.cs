@@ -9,7 +9,7 @@ namespace SunkenSouls
         public Transform player;
         private NavMeshAgent agent;
 
-        private float chaseRange = 3f;
+        private float chaseRangeAndAttackRange = 5f;
         private bool chaseStarted = false;
 
         private void Start()
@@ -28,7 +28,7 @@ namespace SunkenSouls
                 float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
                 // If the player is within the chase range, set the destination to the player's position
-                if (distanceToPlayer <= chaseRange)
+                if (distanceToPlayer <= chaseRangeAndAttackRange)
                 {
                     chaseStarted = true;
                     agent.destination = player.position;
