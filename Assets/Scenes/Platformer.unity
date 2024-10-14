@@ -727,9 +727,9 @@ GameObject:
   m_Component:
   - component: {fileID: 299598122}
   m_Layer: 0
-  m_Name: waypoint
+  m_Name: patrolpoint
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2845,9 +2845,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1675268791}
   m_Layer: 0
-  m_Name: waypoint 2
+  m_Name: patrolpoint (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3060,7 +3060,7 @@ GameObject:
   - component: {fileID: 1745899097}
   - component: {fileID: 1745899096}
   - component: {fileID: 1745899095}
-  - component: {fileID: 1745899094}
+  - component: {fileID: 1745899099}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Untagged
@@ -3083,22 +3083,6 @@ Transform:
   m_Father: {fileID: 755527051}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1745899094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745899092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbe2e2f3cc8c44edebf0762afab11420, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wayPoint:
-  - {fileID: 299598122}
-  - {fileID: 1675268791}
-  currentWayPointIndex: 0
 --- !u!195 &1745899095
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3194,6 +3178,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745899092}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1745899099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745899092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcece8a780c5a47349753f186f67ad3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolPoint:
+  - {fileID: 299598122}
+  - {fileID: 1675268791}
+  currentPatrolPoint: 0
 --- !u!4 &1766280945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3458658117706559701, guid: c080a26c40ee4cd40bcc7104bb8d1e93, type: 3}
