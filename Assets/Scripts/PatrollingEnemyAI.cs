@@ -13,6 +13,7 @@ namespace SunkenSouls
 
         public int currentPatrolPoint = 0;
 
+        // setting the nav mesh agent
         private void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
