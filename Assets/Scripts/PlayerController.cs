@@ -6,21 +6,22 @@ using UnityEngine;
 namespace SunkenSouls
 {
     public class PlayerController : MonoBehaviour
-    {
-        public float moveSpeed = 5f; // Player movement speed
-        public float jumpForce = 8f; // Jump force
-        public CharacterController controller; // Reference to the CharacterController
+    {   
+        // player movement variables
+        public float moveSpeed = 5f;
+        public float jumpForce = 8f;
+        public CharacterController controller;
 
-        private Vector3 moveDirection; // Movement direction
-        private float verticalVelocity; // Vertical velocity (for jumping and gravity)
-        private float gravity = -9.81f; // Gravity constant
-        public Transform cameraTransform; // Reference to the camera's Transform
+        private Vector3 moveDirection;
+        private float verticalVelocity;
+        private float gravity = -9.81f;
+
+        // camera
+        public Transform cameraTransform;
 
 
-        //maximum number of possible pick ups
+        //pick up variables
         private int numPickUps;
-
-        // to store the number of pick ups collected
         private int pickupcount;
 
         // dislpay the collectibles collected text
@@ -42,6 +43,7 @@ namespace SunkenSouls
             }
         }
 
+        // increasing the pick up count if players collides with a pick up
         void OnTriggerEnter(Collider other)
         {
             if(other.gameObject.tag == "PickUp")
@@ -71,7 +73,6 @@ namespace SunkenSouls
             // Calculate the movement direction relative to the camera's orientation
             moveDirection = (forward * verticalInput + right * horizontalInput) * moveSpeed;
 
-            // Handle jumping and gravity
             if (controller.isGrounded)
             {
                 // Reset vertical velocity when grounded
@@ -85,7 +86,7 @@ namespace SunkenSouls
             }
             else
             {
-                // Apply gravity when not grounded
+                // Apply gravity when on air
                 verticalVelocity += gravity * Time.deltaTime;
             }
 
@@ -96,6 +97,7 @@ namespace SunkenSouls
             controller.Move(moveDirection * Time.deltaTime);
         }
 
+        // setting the pick ups text on screen
         private void SetPickUpsCollectedText()
         {
             collectedPickUps.text = "Collected Pick Ups: " + pickupcount.ToString();

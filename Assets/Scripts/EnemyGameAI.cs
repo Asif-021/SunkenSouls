@@ -40,13 +40,14 @@ namespace SunkenSouls
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
+            // if chasing has started we set the enemy's position to the player's position
             if (isChasing)
             {
                 agent.destination = player.position;
 
+                // Stop flashing the image if the player is out of range
                 if (distanceToPlayer > chaseRangeAndAttackRange)
                 {
-                    // Stop flashing the image if the player is out of range
                     if (isFlashing)
                     {
                         StopCoroutine(flashingCoroutine);
@@ -56,6 +57,7 @@ namespace SunkenSouls
                     } 
 
                 }
+                // start flashing the image if the player is in enemy range
                 else
                 {
                     if (!isFlashing)
@@ -86,7 +88,7 @@ namespace SunkenSouls
                 }
             }
 
-            // Patrol if not chasing the player
+            // Patrol if the player has not come into enemy range yet
             if (!isChasing)
             {
                 Patrol();
@@ -119,16 +121,9 @@ namespace SunkenSouls
 
             while (true) 
             {
-                // Show the image
                 attackImage.enabled = true;
-
-                // Wait for the flash duration
                 yield return new WaitForSeconds(flashDuration);
-
-                // Hide the image
                 attackImage.enabled = false;
-
-                // Wait for the same duration before flashing again
                 yield return new WaitForSeconds(flashDuration);
             }
         }
