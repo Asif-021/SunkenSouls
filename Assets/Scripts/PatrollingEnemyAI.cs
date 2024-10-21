@@ -7,7 +7,7 @@ namespace SunkenSouls
 {
     public class PatrollingEnemyAI : MonoBehaviour
     {
-
+        // the first patrol point the enemy will go to
         public List<Transform> patrolPoint;
         NavMeshAgent navMeshAgent;
 
