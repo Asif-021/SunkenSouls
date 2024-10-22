@@ -21,6 +21,6 @@
 # Game Design 
 
 ## Gameplay
-We have not decided to modify the suggested game design. Although currently, the gameplay emphasises on stealth. This is mainly implemented by not giving the player any capabilities to counter the enemy attacks. Hence, the only solution for the player to not be attacked and complete the levels is to not get caught by the enemies.
+We have not decided to modify the suggested game design. Although currently, the gameplay emphasises on stealth. This is mainly implemented by not giving the player any capabilities to counter the enemy attacks. Hence, the only solution for the player to not be attacked and complete the levels is to not come within the enemy ranges.
 
 Although, we will be adding the capabilites for countering the enemy attacks for the player in the final game. This will be in the form of different pick-ups which can be collected by the player and be used against the enemies in a limited capacity.
