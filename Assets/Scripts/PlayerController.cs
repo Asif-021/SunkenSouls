@@ -46,7 +46,7 @@ namespace SunkenSouls
         // increasing the pick up count if players collides with a pick up
         void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.tag == "PickUp")
+            if(other.gameObject.tag == "GoldCoin_Collectible")
             {
                 other.gameObject.SetActive(false);
                 pickupcount++;

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PickUp
+  - GoldCoin_Collectible
   layers:
   - Default
   - TransparentFX
