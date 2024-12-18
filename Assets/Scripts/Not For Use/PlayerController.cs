@@ -54,7 +54,7 @@ namespace SunkenSouls
             }
         }
 
-        void Update()
+        void FixedUpdate()
         {
             // Get input for movement
             float horizontalInput = Input.GetAxis("Horizontal");
