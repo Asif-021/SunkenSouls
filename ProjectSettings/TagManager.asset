@@ -6,8 +6,6 @@ TagManager:
   tags:
   - PickUp
   - GoldCoin_Collectible
-  - CanGrab
-  - canPickUp
   layers:
   - Default
   - TransparentFX
@@ -15,9 +13,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Grabbable
   - 
-  - holdLayer
+  - 
+  - 
   - 
   - 
   - 
