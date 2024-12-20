@@ -9,7 +9,7 @@ namespace SunkenSouls
         [SerializeField] float time_to_destroy_after_collision;
 
         private float timeOf_collision;
-        private bool collided;
+        private bool collided = false;
 
         private void Update()
         {
