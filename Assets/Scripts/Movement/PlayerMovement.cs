@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ namespace SunkenSouls
     {
         [SerializeField] float jumpForce;
         [SerializeField] float movementSpeed;
+        [SerializeField] Camera playerCamera;
 
         private Rigidbody object_rigidBody;
         private Vector2 movementVector;
@@ -23,7 +25,7 @@ namespace SunkenSouls
         }
 
         void OnJump(InputValue value)
-        { 
+        {
             jumpValue = value.Get<float>();
         }
 
@@ -35,8 +37,17 @@ namespace SunkenSouls
 
         void UpdatePosition()
         {
-            Vector3 newPosition = new Vector3(movementVector.x, 0.0f, movementVector.y);
-            object_rigidBody.AddForce(newPosition * movementSpeed * Time.fixedDeltaTime);
+            Vector3 forward = playerCamera.transform.forward;
+            Vector3 right = playerCamera.transform.right;
+
+            forward.y = 0f;
+            right.y = 0f;
+
+            forward.Normalize();
+            right.Normalize();
+
+            Vector3 moveDirection = (forward * movementVector.y + right * movementVector.x).normalized;
+            object_rigidBody.AddForce(moveDirection * movementSpeed * Time.fixedDeltaTime, ForceMode.Force);
         }
 
         void UpdateJump()
