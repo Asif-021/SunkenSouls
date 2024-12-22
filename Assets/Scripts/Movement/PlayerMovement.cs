@@ -31,9 +31,8 @@ namespace SunkenSouls
 
         void Update()
         {
-            Vector3 playerRotation = transform.localRotation.eulerAngles;
-            playerRotation.y = playerCamera.transform.localRotation.eulerAngles.y;
-            transform.localRotation = Quaternion.Euler(playerRotation);
+            // temporarily accessing the main camera until Unity support gets back (as ssignign the camera to a serializeable field does not give its rotation)
+            transform.rotation = Camera.main.transform.rotation;
         }
 
         private void FixedUpdate()
