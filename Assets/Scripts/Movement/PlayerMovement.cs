@@ -29,6 +29,13 @@ namespace SunkenSouls
             jumpValue = value.Get<float>();
         }
 
+        void Update()
+        {
+            Vector3 playerRotation = transform.localRotation.eulerAngles;
+            playerRotation.y = playerCamera.transform.localRotation.eulerAngles.y;
+            transform.localRotation = Quaternion.Euler(playerRotation);
+        }
+
         private void FixedUpdate()
         {
             UpdatePosition();
@@ -37,18 +44,10 @@ namespace SunkenSouls
 
         void UpdatePosition()
         {
-            Vector3 forward = playerCamera.transform.forward;
-            Vector3 right = playerCamera.transform.right;
-
-            forward.y = 0f;
-            right.y = 0f;
-
-            forward.Normalize();
-            right.Normalize();
-
-            Vector3 moveDirection = (forward * movementVector.y + right * movementVector.x).normalized;
-            object_rigidBody.AddForce(moveDirection * movementSpeed * Time.fixedDeltaTime, ForceMode.Force);
+            Vector3 movementDirection = new Vector3(movementVector.x, 0.0f, movementVector.y);
+            object_rigidBody.AddRelativeForce(movementDirection * movementSpeed * Time.fixedDeltaTime, ForceMode.Force);
         }
+
 
         void UpdateJump()
         {
