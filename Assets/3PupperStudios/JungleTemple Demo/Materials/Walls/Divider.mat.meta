@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bd6fa788c87bf8a459bf54c36025aa43
+timeCreated: 1541147849
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123179
+  packageName: Ancient Jungle Temple Demo
+  packageVersion: 1.0
+  assetPath: Assets/3PupperStudios/JungleTemple Demo/Materials/Walls/Divider.mat
+  uploadId: 277189

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fb09b12891974e54989b108cdbbae52b
+timeCreated: 1531013691
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123179
+  packageName: Ancient Jungle Temple Demo
+  packageVersion: 1.0
+  assetPath: Assets/3PupperStudios/JungleTemple Demo/Materials/Roofing/Roof_Dividers_01.mat
+  uploadId: 277189

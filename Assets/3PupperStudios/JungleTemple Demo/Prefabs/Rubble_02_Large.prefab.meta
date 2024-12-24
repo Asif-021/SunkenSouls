@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 01e6eda157781cd4cb6577afa06cd694
+timeCreated: 1541144548
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123179
+  packageName: Ancient Jungle Temple Demo
+  packageVersion: 1.0
+  assetPath: Assets/3PupperStudios/JungleTemple Demo/Prefabs/Rubble_02_Large.prefab
+  uploadId: 277189
