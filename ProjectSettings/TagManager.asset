@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PickUp
   - GoldCoin_Collectible
+  - Treasure
   layers:
   - Default
   - TransparentFX
