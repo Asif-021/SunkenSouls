@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0cc4fb62f16968748b8a99ffafce0ee7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220678
+  packageName: Toon Stylized Explosion
+  packageVersion: 1.0
+  assetPath: Assets/CherryStudio/ToonExplosionVFX/Art/Materials/Explosion/Explosion_Clouds.mat
+  uploadId: 497719

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 477cc4148fad3449482a3bc3178594e2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220678
+  packageName: Toon Stylized Explosion
+  packageVersion: 1.0
+  assetPath: Assets/CherryStudio/ToonExplosionVFX/Scenes/SampleSceneLightingSettings.lighting
+  uploadId: 497719

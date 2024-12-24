@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1029b5f57749a4a4bbaef41ee01f6f92
+timeCreated: 1462303306
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220678
+  packageName: Toon Stylized Explosion
+  packageVersion: 1.0
+  assetPath: Assets/CherryStudio/ToonExplosionVFX/Art/Materials/Explosion/Explosion_GlowBlended.mat
+  uploadId: 497719

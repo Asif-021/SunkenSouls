@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9e8fbbdbe7487924fb7c07a7087dfc20
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 220678
+  packageName: Toon Stylized Explosion
+  packageVersion: 1.0
+  assetPath: Assets/CherryStudio/ToonExplosionVFX/Prefabs/Particles/FireExplosionParticlePrefab.prefab
+  uploadId: 497719
