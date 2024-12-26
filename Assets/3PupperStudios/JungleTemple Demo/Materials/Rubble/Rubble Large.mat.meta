@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a14786b7607d6754398ce473b9ca8f45
+timeCreated: 1531147281
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123179
+  packageName: Ancient Jungle Temple Demo
+  packageVersion: 1.0
+  assetPath: Assets/3PupperStudios/JungleTemple Demo/Materials/Rubble/Rubble Large.mat
+  uploadId: 277189

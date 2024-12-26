@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ef03be54a3ba8214c8574c1d0ed054f8
+timeCreated: 1541225920
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123179
+  packageName: Ancient Jungle Temple Demo
+  packageVersion: 1.0
+  assetPath: Assets/3PupperStudios/JungleTemple Demo/Models/Walls/Materials/lambert5.mat
+  uploadId: 277189

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 58c08d0cd58281b4e86449149f47b49d
+timeCreated: 1541144547
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123179
+  packageName: Ancient Jungle Temple Demo
+  packageVersion: 1.0
+  assetPath: Assets/3PupperStudios/JungleTemple Demo/Prefabs/Roofing_Flat_01.prefab
+  uploadId: 277189

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 76578799f43168549bd28320c79689ed
+timeCreated: 1531149631
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123179
+  packageName: Ancient Jungle Temple Demo
+  packageVersion: 1.0
+  assetPath: Assets/3PupperStudios/JungleTemple Demo/Materials/Roofing/Roofing_Flat_01.mat
+  uploadId: 277189
