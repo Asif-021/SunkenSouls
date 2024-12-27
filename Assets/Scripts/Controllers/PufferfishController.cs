@@ -15,6 +15,7 @@ public class PufferfishController : MonoBehaviour
     private Vector3 originalScale;   // Original size of the pufferfish
     private Vector3 puffedScale;     // Size of the pufferfish when puffed
     public Transform player;         // Reference to the player's Transform
+    private PatrolController patrolController; // Reference to the PatrolController script
 
     void Start()
     {
@@ -27,6 +28,9 @@ public class PufferfishController : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
+
+        // Get the PatrolController script if it's attached to the same GameObject
+        patrolController = GetComponent<PatrolController>();
     }
 
     void Update()
@@ -37,6 +41,12 @@ public class PufferfishController : MonoBehaviour
             float distanceToPlayer = Vector3.Distance(player.position, transform.position);
             if (distanceToPlayer <= detectionRadius)
             {
+                // Stop patrolling and puff up
+                if (patrolController != null)
+                {
+                    patrolController.StopPatrolling();
+                }
+
                 StartCoroutine(PuffUp());
             }
         }
@@ -90,6 +100,12 @@ public class PufferfishController : MonoBehaviour
 
         // Cooldown complete
         onCooldown = false;
+
+        // Resume patrolling after cooldown
+        if (patrolController != null)
+        {
+            patrolController.ResumePatrolling();
+        }
     }
 
     void OnDrawGizmosSelected()
