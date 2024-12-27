@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Respawn : MonoBehaviour
     {
@@ -10,5 +11,6 @@ public class Respawn : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         player.transform.position = respawn_point.transform.position;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

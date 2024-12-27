@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 590d927f63be3ce44bca618d073bb102
+timeCreated: 1541144553
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123179
+  packageName: Ancient Jungle Temple Demo
+  packageVersion: 1.0
+  assetPath: Assets/3PupperStudios/JungleTemple Demo/Prefabs/Small_Tower.prefab
+  uploadId: 277189

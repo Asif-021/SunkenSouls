@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: ff6a1249ab86d5c4588a51507b8b769f
+timeCreated: 1541144547
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123179
+  packageName: Ancient Jungle Temple Demo
+  packageVersion: 1.0
+  assetPath: Assets/3PupperStudios/JungleTemple Demo/Prefabs/Large_Single_Statue_Wall
+    With Statue.prefab
+  uploadId: 277189
