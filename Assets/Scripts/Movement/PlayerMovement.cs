@@ -19,6 +19,22 @@ namespace SunkenSouls
             object_rigidBody = GetComponent<Rigidbody>();
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "MovingPlatform")
+            {
+                transform.SetParent(collision.gameObject.transform, true);
+            }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.tag == "MovingPlatform")
+            {
+                transform.SetParent(null, true);
+            }
+        }
+
         void OnMove(InputValue movementValue)
         {
             movementVector = movementValue.Get<Vector2>();
@@ -50,8 +66,11 @@ namespace SunkenSouls
 
         void UpdateJump()
         {
-            object_rigidBody.AddForce(Vector3.up * jumpValue * jumpForce * Time.fixedDeltaTime);
-            jumpValue = 0.0f;
+            if (-0.1f < object_rigidBody.velocity.y  && object_rigidBody.velocity.y < 0.1f)
+            {
+                object_rigidBody.AddForce(Vector3.up * jumpValue * jumpForce * Time.fixedDeltaTime);
+                jumpValue = 0.0f;
+            }
         }
     }
 }

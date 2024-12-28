@@ -7,6 +7,7 @@ TagManager:
   - PickUp
   - GoldCoin_Collectible
   - Treasure
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
