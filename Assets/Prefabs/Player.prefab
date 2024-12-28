@@ -138,7 +138,7 @@ Transform:
   m_Children:
   - {fileID: 2421853366096166748}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &984966154344762708
 MonoBehaviour:
@@ -209,6 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c423d0cf61303a84bb32fd9bf6c2fb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 150000
-  movementSpeed: 6000
+  jumpForce: 1
+  movementSpeed: 1
   playerCamera: {fileID: 6214358273605795282, guid: c374188dfb82f0a4f887f01d26150513, type: 3}
