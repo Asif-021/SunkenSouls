@@ -23,7 +23,7 @@ namespace SunkenSouls
         {
             if (collision.gameObject.tag == "MovingPlatform")
             {
-                transform.SetParent(collision.gameObject.transform, true);
+                transform.SetParent(collision.gameObject.transform.parent, true);
             }
         }
 
