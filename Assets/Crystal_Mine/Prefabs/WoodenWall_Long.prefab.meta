@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 99e74361ca7e9a34da345c7e41827e06
+timeCreated: 1513323509
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Prefabs/WoodenWall_Long.prefab
+  uploadId: 234275

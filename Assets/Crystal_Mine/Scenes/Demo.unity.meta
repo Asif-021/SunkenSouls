@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: da1ee68f80022d9488f058100800da6f
+timeCreated: 1510664066
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Scenes/Demo.unity
+  uploadId: 234275

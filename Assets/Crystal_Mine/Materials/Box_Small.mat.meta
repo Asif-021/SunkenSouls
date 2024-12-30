@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 14a2ef115cb3dc2469afb48e1fd69d13
+timeCreated: 1513308170
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Materials/Box_Small.mat
+  uploadId: 234275

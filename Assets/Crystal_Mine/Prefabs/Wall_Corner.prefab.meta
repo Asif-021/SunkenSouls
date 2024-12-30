@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d0c912cf2ddddbc4483afce747d3db90
+timeCreated: 1513323736
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Prefabs/Wall_Corner.prefab
+  uploadId: 234275

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 0afadc66e49d7c248b7024c47aebe8a1
+timeCreated: 1520786952
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Models/Materials/Group18462Mat.mat
+  uploadId: 234275

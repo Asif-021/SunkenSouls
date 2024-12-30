@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e86184aeba7b66f4b85a3d56052c0b23
+timeCreated: 1512517720
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Prefabs/MetalBarrier.prefab
+  uploadId: 234275

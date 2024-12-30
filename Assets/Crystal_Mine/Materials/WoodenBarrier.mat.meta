@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 993b04202e339c348a09641abb202117
+timeCreated: 1513310253
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Materials/WoodenBarrier.mat
+  uploadId: 234275
