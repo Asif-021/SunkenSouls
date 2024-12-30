@@ -1,27 +1,34 @@
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
 
 /* Makes enemies follow and attack the player */
-
-
 public class EnemyController : MonoBehaviour
 {
-
     public float lookRadius = 10f;
+    public GameObject player; // Public GameObject for the player reference
 
-    Transform target;
-    NavMeshAgent agent;
-
+    private Transform target;
+    private NavMeshAgent agent;
 
     void Start()
     {
-        target = PlayerManager.instance.player.transform;
+        if (player != null)
+        {
+            target = player.transform;
+        }
+        else
+        {
+            Debug.LogError("Player reference is not assigned in the EnemyController script!");
+        }
+
         agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
+        if (target == null)
+            return;
+
         // Get the distance to the player
         float distance = Vector3.Distance(target.position, transform.position);
 
@@ -36,6 +43,9 @@ public class EnemyController : MonoBehaviour
     // Point towards the player
     void FaceTarget()
     {
+        if (target == null)
+            return;
+
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
@@ -46,5 +56,4 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
-
 }
