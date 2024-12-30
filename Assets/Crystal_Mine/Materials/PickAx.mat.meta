@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 60aec47d785dc2148bf89a49ab3c3d03
+timeCreated: 1511781554
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Materials/PickAx.mat
+  uploadId: 234275

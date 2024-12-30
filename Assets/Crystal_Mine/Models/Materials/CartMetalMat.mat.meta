@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c89f1d647a378a74ca41ec5b733561ae
+timeCreated: 1520786951
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Models/Materials/CartMetalMat.mat
+  uploadId: 234275

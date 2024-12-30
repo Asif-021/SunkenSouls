@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 498d240046e824b5d9eacaace37030b5
+timeCreated: 1475085950
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Spline_Tool/Scripts/Mesh_Maker.cs
+  uploadId: 234275

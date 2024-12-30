@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b96f7888254b46d4f80c9fc9a4b4d377
+timeCreated: 1513359079
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Animations/Latern.controller
+  uploadId: 234275

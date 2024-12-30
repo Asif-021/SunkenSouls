@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5ecf61ebb3f4cc84c8cf980868dcf130
+timeCreated: 1513358541
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Animations/Fire.anim
+  uploadId: 234275

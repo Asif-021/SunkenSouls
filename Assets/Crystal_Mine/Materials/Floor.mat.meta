@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 9d47439176c33614b8854d1f791ccccb
+timeCreated: 1510662617
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Materials/Floor.mat
+  uploadId: 234275

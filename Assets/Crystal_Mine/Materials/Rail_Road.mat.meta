@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 75baccb9184c2dc4aa8394f403e0950e
+timeCreated: 1510663927
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Materials/Rail_Road.mat
+  uploadId: 234275

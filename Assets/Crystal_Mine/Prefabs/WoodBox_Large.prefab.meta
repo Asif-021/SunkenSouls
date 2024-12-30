@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1c33964a412b8934e9fa1b662b54c78c
+timeCreated: 1513323518
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Prefabs/WoodBox_Large.prefab
+  uploadId: 234275

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 855cc5ef16abedc4cb4c6c5328cb71d6
+timeCreated: 1513323786
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Prefabs/Rocks.prefab
+  uploadId: 234275

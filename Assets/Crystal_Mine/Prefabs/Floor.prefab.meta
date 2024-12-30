@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8e2a80e35db1ddd4090f8cc5ca764511
+timeCreated: 1513283003
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Prefabs/Floor.prefab
+  uploadId: 234275

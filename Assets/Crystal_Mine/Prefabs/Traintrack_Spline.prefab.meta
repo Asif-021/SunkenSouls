@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a97dc03b443fbf347845257b1f03b14f
+timeCreated: 1512421804
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 113576
+  packageName: Purple Crystal Mine
+  packageVersion: 1.0
+  assetPath: Assets/Crystal_Mine/Prefabs/Traintrack_Spline.prefab
+  uploadId: 234275
