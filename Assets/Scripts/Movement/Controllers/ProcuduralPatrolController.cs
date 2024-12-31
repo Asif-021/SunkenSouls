@@ -1,26 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ProceduralPatrolController : MonoBehaviour
 {
-    public int numberOfPatrolPoints = 5; // Number of patrol points to generate
+    public int numberOfPatrolPoints = 3; // Number of patrol points to generate
     public Vector3 patrolAreaSize = new Vector3(10f, 0f, 10f); // Size of the patrol area (X, Y, Z)
-    public float patrolSpeed = 3f; // Speed of movement
     public float waitTimeAtPoint = 1f; // Time spent waiting at each point
-    public float sightRange = 5f; // Range within which the fish can detect the player
-    public float chaseSpeed = 5f; // Speed at which the fish chases the player
-    public GameObject player; // Reference to the player object (drag and drop in Inspector)
+    public float sightRange = 7f; // Range within which the fish can detect the player
+    public float patrolSpeed = 3f; // Speed for patrolling
+    public float chaseSpeed = 2f; // Speed for chasing the player
+    public GameObject player; // Reference to the player object
 
     private List<Vector3> patrolPoints = new List<Vector3>(); // List of generated patrol points
     private int currentPatrolIndex = 0; // Current patrol point index
     private bool isPatrolling = true; // State to check if patrolling
     private bool isWaiting = false; // State to check if waiting
-    private Vector3 patrolAreaCenter; // Center of the patrol area
     private bool isChasing = false; // State to check if chasing the player
+    private Vector3 patrolAreaCenter; // Center of the patrol area
+    private NavMeshAgent navMeshAgent; // Reference to the NavMeshAgent component
 
     void Start()
     {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
+        if (navMeshAgent == null)
+        {
+            Debug.LogError("NavMeshAgent component is missing from this GameObject.");
+            return;
+        }
+
         patrolAreaCenter = transform.position; // Set the patrol center to the current position
         GeneratePatrolPoints();
 
@@ -30,33 +40,31 @@ public class ProceduralPatrolController : MonoBehaviour
             return;
         }
 
-        // Move to the first patrol point
-        transform.position = patrolPoints[currentPatrolIndex];
-
         if (player == null)
         {
             Debug.LogError("Player not assigned. Please drag and drop the player GameObject in the Inspector.");
         }
+
+        // Start patrolling
+        SetPatrolDestination();
     }
 
     void Update()
     {
         if (player != null && Vector3.Distance(transform.position, player.transform.position) <= sightRange)
         {
-            isChasing = true;
-            ChasePlayer();
+            StartChasingPlayer();
         }
         else
         {
             if (isChasing)
             {
-                isChasing = false;
-                ResumePatrolling();
+                StopChasingPlayer();
             }
 
-            if (isPatrolling && !isWaiting)
+            if (isPatrolling && !isWaiting && !isChasing && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
-                Patrol();
+                StartCoroutine(WaitAtPoint());
             }
         }
     }
@@ -76,21 +84,29 @@ public class ProceduralPatrolController : MonoBehaviour
         }
     }
 
-    private void Patrol()
+    private void SetPatrolDestination()
     {
-        if (patrolPoints.Count == 0)
+        if (patrolPoints.Count == 0 || navMeshAgent == null)
             return;
 
-        Vector3 targetPoint = patrolPoints[currentPatrolIndex];
+        navMeshAgent.speed = patrolSpeed; // Set patrol speed
+        navMeshAgent.SetDestination(patrolPoints[currentPatrolIndex]);
+    }
 
-        // Move towards the current patrol point
-        transform.position = Vector3.MoveTowards(transform.position, targetPoint, patrolSpeed * Time.deltaTime);
+    private void StartChasingPlayer()
+    {
+        isChasing = true;
+        isPatrolling = false;
+        isWaiting = false; // Ensure the fish doesn't stay in waiting mode during chasing
+        navMeshAgent.speed = chaseSpeed; // Set chase speed
+        navMeshAgent.SetDestination(player.transform.position);
+    }
 
-        // Check if the object has reached the patrol point
-        if (Vector3.Distance(transform.position, targetPoint) < 0.1f)
-        {
-            StartCoroutine(WaitAtPoint());
-        }
+    private void StopChasingPlayer()
+    {
+        isChasing = false;
+        isPatrolling = true; // Resume patrolling
+        SetPatrolDestination(); // Start moving to the next patrol point
     }
 
     private IEnumerator WaitAtPoint()
@@ -102,27 +118,9 @@ public class ProceduralPatrolController : MonoBehaviour
 
         // Move to the next patrol point
         currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Count;
+        SetPatrolDestination();
+
         isWaiting = false;
-    }
-
-    private void ChasePlayer()
-    {
-        // Move towards the player's position
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, chaseSpeed * Time.deltaTime);
-    }
-
-    // Stop the patrolling behavior
-    public void StopPatrolling()
-    {
-        isPatrolling = false;
-    }
-
-    // Resume the patrolling behavior
-    public void ResumePatrolling()
-    {
-        patrolAreaCenter = transform.position; // Update patrol center to the current position
-        GeneratePatrolPoints(); // Regenerate patrol points around the new center
-        isPatrolling = true;
     }
 
     // Visualize patrol points and sight range in the editor

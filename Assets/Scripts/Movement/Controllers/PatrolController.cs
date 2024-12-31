@@ -1,19 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI; // Required for NavMeshAgent
 
 public class PatrolController : MonoBehaviour
 {
     public List<Transform> patrolPoints; // List of patrol points
-    public float patrolSpeed = 3f;       // Speed of movement
     public float waitTimeAtPoint = 1f;   // Time spent waiting at each point
 
-    private int currentPatrolIndex = 0;  // Current patrol point index
-    private bool isPatrolling = true;   // State to check if patrolling
-    private bool isWaiting = false;     // State to check if waiting
+    private NavMeshAgent navMeshAgent;  // Reference to the NavMeshAgent component
+    private int currentPatrolIndex = 0; // Current patrol point index
+    private bool isWaiting = false;    // State to check if waiting
 
     void Start()
     {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
+        if (navMeshAgent == null)
+        {
+            Debug.LogError("NavMeshAgent component is missing from this GameObject.");
+            return;
+        }
+
         if (patrolPoints.Count == 0)
         {
             Debug.LogWarning("No patrol points assigned to PatrolController.");
@@ -21,29 +29,12 @@ public class PatrolController : MonoBehaviour
         }
 
         // Move to the first patrol point
-        transform.position = patrolPoints[currentPatrolIndex].position;
+        SetDestination(patrolPoints[currentPatrolIndex]);
     }
 
     void Update()
     {
-        if (isPatrolling && !isWaiting)
-        {
-            Patrol();
-        }
-    }
-
-    private void Patrol()
-    {
-        if (patrolPoints.Count == 0)
-            return;
-
-        Transform targetPoint = patrolPoints[currentPatrolIndex];
-
-        // Move towards the current patrol point
-        transform.position = Vector3.MoveTowards(transform.position, targetPoint.position, patrolSpeed * Time.deltaTime);
-
-        // Check if the object has reached the patrol point
-        if (Vector3.Distance(transform.position, targetPoint.position) < 0.1f)
+        if (!isWaiting && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
             StartCoroutine(WaitAtPoint());
         }
@@ -58,18 +49,35 @@ public class PatrolController : MonoBehaviour
 
         // Move to the next patrol point
         currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Count;
+        SetDestination(patrolPoints[currentPatrolIndex]);
+
         isWaiting = false;
+    }
+
+    private void SetDestination(Transform target)
+    {
+        if (navMeshAgent != null && target != null)
+        {
+            navMeshAgent.SetDestination(target.position);
+        }
     }
 
     // Stop the patrolling behavior
     public void StopPatrolling()
     {
-        isPatrolling = false;
+        if (navMeshAgent != null)
+        {
+            navMeshAgent.isStopped = true;
+        }
     }
 
     // Resume the patrolling behavior
     public void ResumePatrolling()
     {
-        isPatrolling = true;
+        if (navMeshAgent != null)
+        {
+            navMeshAgent.isStopped = false;
+            SetDestination(patrolPoints[currentPatrolIndex]);
+        }
     }
 }
