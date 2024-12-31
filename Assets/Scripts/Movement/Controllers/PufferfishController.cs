@@ -14,6 +14,7 @@ public class PufferfishController : MonoBehaviour
     private bool onCooldown = false; // Whether the pufferfish is on cooldown
     private Vector3 originalScale;   // Original size of the pufferfish
     private Vector3 puffedScale;     // Size of the pufferfish when puffed
+    private Vector3 originalPosition; // Original position of the pufferfish
     public Transform player;         // Reference to the player's Transform
     private PatrolController patrolController; // Reference to the PatrolController script
 
@@ -22,6 +23,7 @@ public class PufferfishController : MonoBehaviour
         // Save the original scale of the pufferfish and calculate the puffed scale
         originalScale = transform.localScale;
         puffedScale = originalScale * 2f;
+        originalPosition = transform.position; // Store the original position
 
         // Find the player if not already assigned
         if (player == null)
@@ -60,11 +62,14 @@ public class PufferfishController : MonoBehaviour
         float elapsedTime = 0f;
         while (elapsedTime < (1f / puffSpeed))
         {
-            transform.localScale = Vector3.Lerp(originalScale, puffedScale, elapsedTime * puffSpeed);
+            float t = elapsedTime * puffSpeed;
+            transform.localScale = Vector3.Lerp(originalScale, puffedScale, t);
+            transform.position = originalPosition; // Keep position fixed
             elapsedTime += Time.deltaTime;
             yield return null;
         }
         transform.localScale = puffedScale;
+        transform.position = originalPosition; // Keep position fixed
 
         // Apply a force to the player
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
@@ -85,11 +90,14 @@ public class PufferfishController : MonoBehaviour
         elapsedTime = 0f;
         while (elapsedTime < (1f / puffSpeed))
         {
-            transform.localScale = Vector3.Lerp(puffedScale, originalScale, elapsedTime * puffSpeed);
+            float t = elapsedTime * puffSpeed;
+            transform.localScale = Vector3.Lerp(puffedScale, originalScale, t);
+            transform.position = originalPosition; // Keep position fixed
             elapsedTime += Time.deltaTime;
             yield return null;
         }
         transform.localScale = originalScale;
+        transform.position = originalPosition; // Keep position fixed
 
         // Enter cooldown phase
         isPuffed = false;

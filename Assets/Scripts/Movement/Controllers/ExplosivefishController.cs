@@ -1,82 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SunkenSouls
 {
     public class ExplosiveFishController : MonoBehaviour
     {
-        // Enumeration to define the states of the fish
         public enum FishState { Idle, Chasing, Warning, Exploding, Cooldown }
         private FishState currentState = FishState.Idle;
 
-        // Public variables for tuning fish behavior
-        public float detectionRange = 10f;         // How far the fish can detect the player
-        public float detectionAngle = 60f;        // Detection cone angle (30° on each side)
-        public float chaseSpeed = 3f;             // Speed of the fish while chasing
-        public float rotationSpeed = 5f;         // Speed of rotation toward the player
-        public float warningDuration = 2f;       // Duration of the warning phase
-        public float explosionRadius = 3f;       // Radius of the explosion
-        public float explosionTriggerRange = 2f; // Distance required to trigger the explosion
-        public float cooldownDuration = 5f;      // Cooldown time after exploding
-        public float lostPlayerDuration = 3f;    // Time to wait before resuming patrol after losing the player
-        public Transform player;                 // Reference to the player
-        public GameObject explosionEffectPrefab; // Prefab for the explosion effect
+        public float detectionRange = 10f;
+        public float detectionAngle = 60f;
+        public float chaseSpeed = 3f;
+        public float rotationSpeed = 5f;
+        public float warningDuration = 2f;
+        public float explosionRadius = 3f;
+        public float explosionTriggerRange = 2f;
+        public float cooldownDuration = 5f;
+        public float lostPlayerDuration = 3f;
+        public Transform player;
+        public GameObject explosionEffectPrefab;
 
-        private bool isExploded = false;         // Flag to prevent multiple explosions
-        private float timeSincePlayerSeen = 0f;  // Timer for losing the player
+        public Transform respawnPoint; // Reference to the respawn point
 
-        // Reference to the PatrolController
+        private bool isExploded = false;
+        private float timeSincePlayerSeen = 0f;
         private PatrolController patrolController;
 
         void Start()
         {
-            // If player is not manually assigned, find it using the "Player" tag
             if (player == null)
             {
                 player = GameObject.FindGameObjectWithTag("Player").transform;
             }
 
-            // Get the PatrolController component
             patrolController = GetComponent<PatrolController>();
         }
 
         void Update()
         {
-            // Handle behavior based on the current state
             switch (currentState)
             {
                 case FishState.Idle:
-                    CheckPlayerVisibility(); // Check if the player is detected
+                    CheckPlayerVisibility();
                     break;
 
                 case FishState.Chasing:
-                    ChasePlayer(); // Move toward the player
+                    ChasePlayer();
                     break;
 
                 case FishState.Warning:
                 case FishState.Exploding:
                 case FishState.Cooldown:
-                    // These states are handled in coroutines
                     break;
             }
         }
 
         private void CheckPlayerVisibility()
         {
-            // Calculate the direction to the player
             Vector3 directionToPlayer = (player.position - transform.position).normalized;
-
-            // Get the distance and angle between the fish and the player
             float distanceToPlayer = Vector3.Distance(player.position, transform.position);
             float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
 
-            // If within detection range and cone, switch to Chasing state
             if (distanceToPlayer <= detectionRange && angleToPlayer <= detectionAngle / 2f)
             {
                 currentState = FishState.Chasing;
 
-                // Stop patrolling when switching to chasing
                 if (patrolController != null)
                 {
                     patrolController.StopPatrolling();
@@ -86,26 +76,21 @@ namespace SunkenSouls
 
         private void ChasePlayer()
         {
-            // Calculate the distance to the player
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-            // If the player is within explosion trigger range, start the Warning phase
             if (distanceToPlayer <= explosionTriggerRange)
             {
                 StartCoroutine(WarningPhase());
                 return;
             }
 
-            // Rotate toward the player for more accurate chasing
             Vector3 direction = (player.position - transform.position).normalized;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
-            // Move the fish toward the player
             transform.position += direction * chaseSpeed * Time.deltaTime;
 
-            // Handle losing the player
-            HandleLostPlayer(directionToPlayer: direction, distanceToPlayer: distanceToPlayer);
+            HandleLostPlayer(direction, distanceToPlayer);
         }
 
         private void HandleLostPlayer(Vector3 directionToPlayer, float distanceToPlayer)
@@ -123,7 +108,7 @@ namespace SunkenSouls
             }
             else
             {
-                timeSincePlayerSeen = 0f; // Reset timer if the player is seen again
+                timeSincePlayerSeen = 0f;
             }
         }
 
@@ -131,7 +116,6 @@ namespace SunkenSouls
         {
             currentState = FishState.Idle;
 
-            // Resume patrolling when player is lost
             if (patrolController != null)
             {
                 patrolController.ResumePatrolling();
@@ -140,10 +124,8 @@ namespace SunkenSouls
 
         private IEnumerator WarningPhase()
         {
-            // Enter the Warning state
             currentState = FishState.Warning;
 
-            // Visual warning effect: Scale up over time
             float elapsed = 0f;
             Vector3 originalScale = transform.localScale;
             Vector3 warningScale = originalScale * 1.5f;
@@ -156,14 +138,11 @@ namespace SunkenSouls
             }
 
             transform.localScale = warningScale;
-
-            // Trigger the explosion
             StartCoroutine(Explode());
         }
 
         private IEnumerator Explode()
         {
-            // Enter the Exploding state
             currentState = FishState.Exploding;
 
             // Spawn the explosion effect
@@ -172,12 +151,13 @@ namespace SunkenSouls
                 Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
             }
 
-            // Apply force to the player if they have a Rigidbody
-            Rigidbody playerRb = player.GetComponent<Rigidbody>();
-            if (playerRb != null)
+            // Check if the player is within the explosion radius
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            if (distanceToPlayer <= explosionRadius)
             {
-                Vector3 explosionDirection = (player.position - transform.position).normalized;
-                playerRb.AddForce(explosionDirection * -10f, ForceMode.Impulse);
+                // Reload the current scene
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                yield break; // Stop further execution since the scene is reloading
             }
 
             // Disable the fish temporarily
@@ -192,20 +172,21 @@ namespace SunkenSouls
             ResumePatrolling();
         }
 
+
         void OnDrawGizmosSelected()
         {
-            // Visualize detection range and explosion range in the editor
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, detectionRange); // Detection range
+            Gizmos.DrawWireSphere(transform.position, detectionRange);
 
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, explosionTriggerRange); // Explosion trigger range
+            Gizmos.DrawWireSphere(transform.position, explosionTriggerRange);
 
             Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, explosionRadius);
+
             Vector3 leftBoundary = Quaternion.Euler(0, -detectionAngle / 2, 0) * transform.forward;
             Vector3 rightBoundary = Quaternion.Euler(0, detectionAngle / 2, 0) * transform.forward;
 
-            // Draw the detection cone
             Gizmos.DrawLine(transform.position, transform.position + leftBoundary * detectionRange);
             Gizmos.DrawLine(transform.position, transform.position + rightBoundary * detectionRange);
         }
