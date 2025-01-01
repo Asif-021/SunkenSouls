@@ -8,6 +8,7 @@ TagManager:
   - GoldCoin_Collectible
   - Treasure
   - MovingPlatform
+  - Spears
   layers:
   - Default
   - TransparentFX
