@@ -40,7 +40,7 @@ namespace SunkenSouls
 
         private void SetHealth()
         {
-            foreground.fillAmount = (float) currentHealth / maxHealth;
+            foreground.fillAmount = Mathf.Max(0, (float) currentHealth / maxHealth);
         }
     }
 }
