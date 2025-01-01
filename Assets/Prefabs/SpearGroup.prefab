@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8178169150379699718}
-  - component: {fileID: 2145061292829274731}
+  - component: {fileID: 7442526667040748093}
   m_Layer: 0
   m_Name: SpearGroup
-  m_TagString: Untagged
+  m_TagString: Spears
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,10 +39,10 @@ Transform:
   - {fileID: 872299286433524686}
   - {fileID: 5867992746544931835}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &2145061292829274731
-MeshCollider:
+--- !u!65 &7442526667040748093
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -59,10 +59,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 1.5816393, y: 2.1953573, z: 1.6032484}
+  m_Center: {x: -0.012451649, y: -1.9617338, z: -0.0580045}
 --- !u!1001 &212742423164618045
 PrefabInstance:
   m_ObjectHideFlags: 0

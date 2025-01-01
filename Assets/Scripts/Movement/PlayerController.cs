@@ -4,34 +4,43 @@ using UnityEngine.InputSystem;
 
 namespace SunkenSouls
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         [SerializeField] float jumpForce;
         [SerializeField] float movementSpeed;
-        [SerializeField] Camera playerCamera;
 
         private Rigidbody object_rigidBody;
         private Vector2 movementVector;
         private float jumpValue;
 
+        public static PlayerController instance;
+
         void Start()
         {
+            instance = this;
             object_rigidBody = GetComponent<Rigidbody>();
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.tag == "MovingPlatform")
+            switch (collision.gameObject.tag)
             {
-                transform.SetParent(collision.gameObject.transform.parent, true);
+                case "MovingPlatform":
+                    transform.SetParent(collision.gameObject.transform.parent, true);
+                    break;
+                case "Spears":
+                    DealDamage(100);
+                    break;
             }
         }
 
         private void OnCollisionExit(Collision collision)
         {
-            if (collision.gameObject.tag == "MovingPlatform")
+            switch (collision.gameObject.tag)
             {
-                transform.SetParent(null, true);
+                case "MovingPlatform":
+                    transform.SetParent(null, true);
+                    break;
             }
         }
 
@@ -71,6 +80,11 @@ namespace SunkenSouls
                 object_rigidBody.AddForce(Vector3.up * jumpValue * jumpForce * Time.fixedDeltaTime);
                 jumpValue = 0.0f;
             }
+        }
+
+        public void DealDamage(int damageAmount)
+        {
+            HealthBar.instance.DecreaseHealth(damageAmount);
         }
     }
 }
