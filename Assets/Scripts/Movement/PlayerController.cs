@@ -25,6 +25,7 @@ namespace SunkenSouls
             object_rigidBody = GetComponent<Rigidbody>();
 
             Debug.Log("Trying to set static var lives at " + lives);
+            Debug.Log("Lives Left text manager instance is " + LivesLeftText.instance);
             LivesLeftText.instance.SetText(lives);
             playerHealth = HealthBar.instance.GetHealth();
 

@@ -12,7 +12,7 @@ namespace SunkenSouls
 
         public static LivesLeftText instance;
 
-        private void Start()
+        private void Awake()
         {
             instance = this;
         }
