@@ -27,8 +27,12 @@ namespace SunkenSouls
 
         private static int playerHealth;
 
+        private bool canTakeDamage;
+
         void Start()
         {
+            canTakeDamage = true;
+
             object_rigidBody = GetComponent<Rigidbody>();
 
             LivesLeftText.instance.SetText(lives);
@@ -132,15 +136,20 @@ namespace SunkenSouls
             {
                 if (lives > 0)
                 {
-                    lives -= 1;
-                    LivesLeftText.instance.SetText(lives);
-                    HealthBar.instance.ResetHealth();
+                    if (canTakeDamage)
+                    {
+                        lives -= 1;
+                        LivesLeftText.instance.SetText(lives);
+                        HealthBar.instance.ResetHealth();
 
-                    // Play the death cutscene
-                    deathCutsceneDirector.Play();
+                        canTakeDamage = false;
 
-                    // Delay scene reload to allow the cutscene to play
-                    StartCoroutine(LoadSceneAfterCutscene(deathCutsceneDirector, SceneManager.GetActiveScene().buildIndex));
+                        // Play the death cutscene
+                        deathCutsceneDirector.Play();
+
+                        // Delay scene reload to allow the cutscene to play
+                        StartCoroutine(LoadSceneAfterCutscene(deathCutsceneDirector, SceneManager.GetActiveScene().buildIndex));
+                    }
                 }
                 else
                 {
