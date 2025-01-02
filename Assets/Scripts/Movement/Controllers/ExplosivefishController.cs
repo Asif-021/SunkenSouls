@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 namespace SunkenSouls
 {
@@ -21,8 +21,7 @@ namespace SunkenSouls
         public float lostPlayerDuration = 3f;
         public Transform player;
         public GameObject explosionEffectPrefab;
-
-        public Transform respawnPoint; // Reference to the respawn point
+        public int explosionDamage = 50; // Damage dealt to the player
 
         private bool isExploded = false;
         private float timeSincePlayerSeen = 0f;
@@ -155,9 +154,8 @@ namespace SunkenSouls
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
             if (distanceToPlayer <= explosionRadius)
             {
-                // Reload the current scene
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                yield break; // Stop further execution since the scene is reloading
+                // Deal damage to the player
+                PlayerController.instance.DealDamage(explosionDamage);
             }
 
             // Disable the fish temporarily
@@ -171,7 +169,6 @@ namespace SunkenSouls
             transform.localScale = Vector3.one;
             ResumePatrolling();
         }
-
 
         void OnDrawGizmosSelected()
         {
