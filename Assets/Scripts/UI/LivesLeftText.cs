@@ -20,7 +20,6 @@ namespace SunkenSouls
         public void SetText(int lives)
         {
             livesLeft.text = "You have " + lives + " lives left";
-            Debug.Log("New lives left text is " + livesLeft.text);
         }
     }
 }

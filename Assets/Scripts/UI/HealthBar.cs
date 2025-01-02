@@ -9,7 +9,7 @@ namespace SunkenSouls
     {
         [SerializeField] Image foreground;
 
-        private int currentHealth = 100;
+        private static int currentHealth = 100;
         private int maxHealth = 100;
 
         public static HealthBar instance;
@@ -17,8 +17,6 @@ namespace SunkenSouls
         void Awake()
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
-
             SetHealth();
         }
 
