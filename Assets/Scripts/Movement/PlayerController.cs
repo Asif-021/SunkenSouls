@@ -1,7 +1,9 @@
 using Cinemachine;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 using static Cinemachine.DocumentationSortingAttribute;
 
 namespace SunkenSouls
@@ -14,6 +16,10 @@ namespace SunkenSouls
         private Rigidbody object_rigidBody;
         private Vector2 movementVector;
         private float jumpValue;
+
+        public PlayableDirector deathCutsceneDirector;   // Death cutscene input
+        public PlayableDirector gameOverCutsceneDirector; // Game over cutscene input
+
 
         public static PlayerController instance;
 
@@ -121,22 +127,39 @@ namespace SunkenSouls
 
         private void UpdateHealthData()
         {
+
             if (playerHealth == 0)
             {
-                if (lives == 0)
+                if (lives > 0)
                 {
-                    SceneManager.LoadScene(0);
+                    lives -= 1;
+                    LivesLeftText.instance.SetText(lives);
+                    HealthBar.instance.ResetHealth();
+
+                    // Play the death cutscene
+                    deathCutsceneDirector.Play();
+
+                    // Delay scene reload to allow the cutscene to play
+                    StartCoroutine(LoadSceneAfterCutscene(deathCutsceneDirector, SceneManager.GetActiveScene().buildIndex));
                 }
                 else
                 {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                    object_rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+                    // Play the game over cutscene
+                    gameOverCutsceneDirector.Play();
 
-                    lives -= 1;                
-                    LivesLeftText.instance.SetText(lives);
-                    HealthBar.instance.ResetHealth();
+                    // Delay scene reload to allow the cutscene to play
+                    StartCoroutine(LoadSceneAfterCutscene(gameOverCutsceneDirector, 0));
                 }
             }
+        }
+
+        private IEnumerator LoadSceneAfterCutscene(PlayableDirector director, int sceneIndex)
+        {
+            // Wait for cutscene to finish
+            yield return new WaitForSeconds((float)director.duration);
+
+            // Load the scene
+            SceneManager.LoadScene(sceneIndex);
         }
     }
 }
