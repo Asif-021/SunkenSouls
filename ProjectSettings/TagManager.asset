@@ -9,6 +9,7 @@ TagManager:
   - Treasure
   - MovingPlatform
   - Spears
+  - NextLevelDoor
   layers:
   - Default
   - TransparentFX

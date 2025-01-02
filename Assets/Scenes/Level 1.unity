@@ -80353,6 +80353,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 512158320328764152, guid: a9ede53587fbb4bd9b2063b1c8120403, type: 3}
+      propertyPath: m_Size.x
+      value: 13.320241
+      objectReference: {fileID: 0}
+    - target: {fileID: 512158320328764152, guid: a9ede53587fbb4bd9b2063b1c8120403, type: 3}
+      propertyPath: m_Center.x
+      value: 5.8172417
+      objectReference: {fileID: 0}
+    - target: {fileID: 512158320328764152, guid: a9ede53587fbb4bd9b2063b1c8120403, type: 3}
+      propertyPath: m_Center.z
+      value: -5.806864e-16
+      objectReference: {fileID: 0}
     - target: {fileID: 6810641122584253357, guid: a9ede53587fbb4bd9b2063b1c8120403, type: 3}
       propertyPath: m_Name
       value: Entrance_3A

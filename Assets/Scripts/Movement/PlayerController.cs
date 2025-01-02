@@ -2,6 +2,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using static Cinemachine.DocumentationSortingAttribute;
 
 namespace SunkenSouls
 {
@@ -27,6 +28,8 @@ namespace SunkenSouls
             LivesLeftText.instance.SetText(lives);
             playerHealth = HealthBar.instance.GetHealth();
 
+            CoinsCollectedText.instance.SetCoinsRequired(GameObject.FindGameObjectsWithTag("GoldCoin_Collectible").Length);
+
             instance = this;
         }
 
@@ -40,6 +43,12 @@ namespace SunkenSouls
                 case "Spears":
                     DealDamage(100);
                     break;
+                case "NextLevelDoor":
+                    if (CoinsCollectedText.instance.GetCoinsToCollect() == 0)
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    }
+                    break;
             }
         }
 
@@ -49,6 +58,17 @@ namespace SunkenSouls
             {
                 case "MovingPlatform":
                     transform.SetParent(null, true);
+                    break;
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            switch (other.gameObject.tag)
+            {
+                case "GoldCoin_Collectible":
+                    CoinsCollectedText.instance.UpdateCoinsCollected();
+                    other.gameObject.SetActive(false);
                     break;
             }
         }
@@ -71,8 +91,8 @@ namespace SunkenSouls
 
         private void FixedUpdate()
         {
-            UpdatePosition();
             UpdateJump();
+            UpdatePosition();
         }
 
         void UpdatePosition()

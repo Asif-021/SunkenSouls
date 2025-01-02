@@ -9,7 +9,7 @@ namespace SunkenSouls
     {
         [SerializeField] Image foreground;
 
-        private static int currentHealth = 100;
+        public static int currentHealth = 100;
         private int maxHealth = 100;
 
         public static HealthBar instance;
@@ -23,6 +23,7 @@ namespace SunkenSouls
         public void DecreaseHealth(int damage)
         {
             currentHealth -= damage;
+            currentHealth = Mathf.Max(0, currentHealth);
             SetHealth();
         }
 
@@ -39,7 +40,7 @@ namespace SunkenSouls
 
         private void SetHealth()
         {
-            foreground.fillAmount = Mathf.Max(0, (float) currentHealth / maxHealth);
+            foreground.fillAmount = (float) currentHealth / maxHealth;
         }
     }
 }
