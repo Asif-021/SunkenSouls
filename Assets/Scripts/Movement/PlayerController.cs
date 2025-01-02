@@ -1,6 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace SunkenSouls
 {
@@ -15,10 +16,19 @@ namespace SunkenSouls
 
         public static PlayerController instance;
 
+        public static int lives;
+
+        private int playerHealth;
+
         void Start()
         {
-            instance = this;
             object_rigidBody = GetComponent<Rigidbody>();
+
+            Debug.Log("Trying to set static var lives at " + lives);
+            LivesLeftText.instance.SetText(lives);
+            playerHealth = HealthBar.instance.GetHealth();
+
+            instance = this;
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -85,6 +95,28 @@ namespace SunkenSouls
         public void DealDamage(int damageAmount)
         {
             HealthBar.instance.DecreaseHealth(damageAmount);
+            playerHealth = HealthBar.instance.GetHealth();
+
+            UpdateHealthData();
+        }
+
+        private void UpdateHealthData()
+        {
+            if (playerHealth == 0)
+            {
+                if (lives == 0)
+                {
+                    SceneManager.LoadScene(0);
+                }
+                else
+                {
+                    lives -= 1;
+                    LivesLeftText.instance.SetText(lives);
+                    HealthBar.instance.ResetHealth();
+
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
+            }
         }
     }
 }

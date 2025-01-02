@@ -14,9 +14,10 @@ namespace SunkenSouls
 
         public static HealthBar instance;
 
-        void Start()
+        void Awake()
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
 
             SetHealth();
         }
