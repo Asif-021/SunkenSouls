@@ -129,11 +129,12 @@ namespace SunkenSouls
                 }
                 else
                 {
-                    lives -= 1;
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    object_rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+
+                    lives -= 1;                
                     LivesLeftText.instance.SetText(lives);
                     HealthBar.instance.ResetHealth();
-
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
             }
         }
