@@ -21,8 +21,12 @@ namespace SunkenSouls
 
         private static int playerHealth;
 
+        private bool canTakeDamage;
+
         void Start()
         {
+            canTakeDamage = true;
+
             object_rigidBody = GetComponent<Rigidbody>();
 
             LivesLeftText.instance.SetText(lives);
@@ -129,12 +133,16 @@ namespace SunkenSouls
                 }
                 else
                 {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                    object_rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+                    if (canTakeDamage)
+                    {
+                        lives -= 1;
+                        LivesLeftText.instance.SetText(lives);
+                        HealthBar.instance.ResetHealth();
 
-                    lives -= 1;                
-                    LivesLeftText.instance.SetText(lives);
-                    HealthBar.instance.ResetHealth();
+                        canTakeDamage = false;
+
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    }
                 }
             }
         }
