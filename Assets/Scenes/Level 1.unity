@@ -8156,7 +8156,9 @@ MonoBehaviour:
   distanceFromPlayer: 2
   heightOffset: 1
   goldCoinTag: GoldCoin_Collectible
+  enemyTag: Enemy
   coinDetectionRange: 20
+  warningRange: 10
 --- !u!4 &178780352 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 00fcab7080eb4ec4a8d4e28db150fb76, type: 3}
@@ -50718,7 +50720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3727865480964751504, guid: 0f6dd6fa2e1e74fbda3e7b54c3ddd1dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.61
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 3727865480964751504, guid: 0f6dd6fa2e1e74fbda3e7b54c3ddd1dd, type: 3}
       propertyPath: m_LocalPosition.z
