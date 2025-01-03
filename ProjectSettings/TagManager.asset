@@ -10,6 +10,7 @@ TagManager:
   - MovingPlatform
   - Spears
   - NextLevelDoor
+  - Enemy
   layers:
   - Default
   - TransparentFX
