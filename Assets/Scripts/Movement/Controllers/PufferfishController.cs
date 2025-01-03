@@ -11,7 +11,6 @@ namespace SunkenSouls
         public float puffDuration = 2f;    // Time the pufferfish stays puffed up
         public float cooldownTime = 3f;    // Time before the pufferfish can puff up again
         public float puffSpeed = 5f;       // Speed at which the pufferfish puffs up
-        [SerializeField] private int damage = 20; // Damage dealt to the player
 
         private bool isPuffed = false;     // Whether the pufferfish is currently puffed up
         private bool onCooldown = false;  // Whether the pufferfish is on cooldown
@@ -94,7 +93,8 @@ namespace SunkenSouls
                 }
             }
 
-            // Deal damage to the player
+            // Deal damage to the player based on difficulty
+            int damage = MainMenu.difficulty == DifficultyLevel.HARD ? 35 : 20;
             if (PlayerController.instance != null)
             {
                 PlayerController.instance.DealDamage(damage);

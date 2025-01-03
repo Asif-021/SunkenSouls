@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace SunkenSouls
 {
     public class ExplosiveFishController : MonoBehaviour
@@ -21,7 +20,6 @@ namespace SunkenSouls
         public float lostPlayerDuration = 3f;
         public Transform player;
         public GameObject explosionEffectPrefab;
-        public int explosionDamage = 50; // Damage dealt to the player
 
         private bool isExploded = false;
         private float timeSincePlayerSeen = 0f;
@@ -154,6 +152,9 @@ namespace SunkenSouls
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
             if (distanceToPlayer <= explosionRadius)
             {
+                // Determine damage based on difficulty
+                int explosionDamage = MainMenu.difficulty == DifficultyLevel.HARD ? 65 : 40;
+
                 // Deal damage to the player
                 PlayerController.instance.DealDamage(explosionDamage);
             }
