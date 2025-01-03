@@ -17,9 +17,8 @@ namespace SunkenSouls
         private Vector2 movementVector;
         private float jumpValue;
 
-        public PlayableDirector deathCutsceneDirector;   // Death cutscene input
-        public PlayableDirector gameOverCutsceneDirector; // Game over cutscene input
-
+        public PlayableDirector deathCutsceneDirector;
+        public PlayableDirector gameOverCutsceneDirector;
 
         public static PlayerController instance;
 
@@ -36,6 +35,8 @@ namespace SunkenSouls
             object_rigidBody = GetComponent<Rigidbody>();
 
             LivesLeftText.instance.SetText(lives);
+
+            HealthBar.instance.ResetHealth();
             playerHealth = HealthBar.instance.GetHealth();
 
             CoinsCollectedText.instance.SetCoinsRequired(GameObject.FindGameObjectsWithTag("GoldCoin_Collectible").Length);
@@ -108,7 +109,7 @@ namespace SunkenSouls
         void UpdatePosition()
         {
             Vector3 movementDirection = new Vector3(movementVector.x, 0.0f, movementVector.y);
-            object_rigidBody.AddRelativeForce(movementDirection * movementSpeed * Time.fixedDeltaTime, ForceMode.Force);
+            object_rigidBody.AddRelativeForce(movementDirection * movementSpeed, ForceMode.Force);
         }
 
 
@@ -116,7 +117,7 @@ namespace SunkenSouls
         {
             if (-0.1f < object_rigidBody.velocity.y  && object_rigidBody.velocity.y < 0.1f)
             {
-                object_rigidBody.AddForce(Vector3.up * jumpValue * jumpForce * Time.fixedDeltaTime);
+                object_rigidBody.AddForce(Vector3.up * jumpValue * jumpForce);
                 jumpValue = 0.0f;
             }
         }
@@ -138,25 +139,18 @@ namespace SunkenSouls
                 {
                     if (canTakeDamage)
                     {
-                        lives -= 1;
-                        LivesLeftText.instance.SetText(lives);
-                        HealthBar.instance.ResetHealth();
-
                         canTakeDamage = false;
 
-                        // Play the death cutscene
                         deathCutsceneDirector.Play();
-
-                        // Delay scene reload to allow the cutscene to play
                         StartCoroutine(LoadSceneAfterCutscene(deathCutsceneDirector, SceneManager.GetActiveScene().buildIndex));
+
+                        lives -= 1;
+                        LivesLeftText.instance.SetText(lives);
                     }
                 }
-                else
+                else if (lives == 0)
                 {
-                    // Play the game over cutscene
                     gameOverCutsceneDirector.Play();
-
-                    // Delay scene reload to allow the cutscene to play
                     StartCoroutine(LoadSceneAfterCutscene(gameOverCutsceneDirector, 0));
                 }
             }
@@ -164,10 +158,7 @@ namespace SunkenSouls
 
         private IEnumerator LoadSceneAfterCutscene(PlayableDirector director, int sceneIndex)
         {
-            // Wait for cutscene to finish
             yield return new WaitForSeconds((float)director.duration);
-
-            // Load the scene
             SceneManager.LoadScene(sceneIndex);
         }
     }

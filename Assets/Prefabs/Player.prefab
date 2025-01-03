@@ -667,8 +667,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c423d0cf61303a84bb32fd9bf6c2fb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 150000
-  movementSpeed: 7000
+  jumpForce: 3000
+  movementSpeed: 100
+  deathCutsceneDirector: {fileID: 0}
+  gameOverCutsceneDirector: {fileID: 0}
 --- !u!1 &7002427749393371264
 GameObject:
   m_ObjectHideFlags: 0
