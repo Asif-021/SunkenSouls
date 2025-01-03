@@ -118,7 +118,7 @@ namespace SunkenSouls
 
         void UpdateJump()
         {
-            if (-0.1f < object_rigidBody.velocity.y  && object_rigidBody.velocity.y < 0.1f)
+            if (-0.1f < object_rigidBody.velocity.y && object_rigidBody.velocity.y < 0.1f)
             {
                 object_rigidBody.AddForce(Vector3.up * jumpValue * jumpForce);
                 jumpValue = 0.0f;
@@ -141,7 +141,6 @@ namespace SunkenSouls
                 {
                     if (lives > 0)
                     {
-                        deathCutsceneDirector.Play();
                         StartCoroutine(LoadSceneAfterCutscene(deathCutsceneDirector, SceneManager.GetActiveScene().buildIndex));
 
                         lives -= 1;
@@ -149,7 +148,6 @@ namespace SunkenSouls
                     }
                     else
                     {
-                        gameOverCutsceneDirector.Play();
                         StartCoroutine(LoadSceneAfterCutscene(gameOverCutsceneDirector, 0));
                     }
 
@@ -160,6 +158,7 @@ namespace SunkenSouls
 
         private IEnumerator LoadSceneAfterCutscene(PlayableDirector director, int sceneIndex)
         {
+            director.Play();
             yield return new WaitForSeconds((float)director.duration);
             SceneManager.LoadScene(sceneIndex);
         }

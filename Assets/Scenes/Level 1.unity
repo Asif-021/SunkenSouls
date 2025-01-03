@@ -7058,33 +7058,9 @@ PrefabInstance:
       propertyPath: gameOverCutsceneDirector
       value: 
       objectReference: {fileID: 133855985}
-    - target: {fileID: 2954433451875422049, guid: 739531dc48e2751429502ea2a129054c, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0.735849
-      objectReference: {fileID: 0}
-    - target: {fileID: 2954433451875422049, guid: 739531dc48e2751429502ea2a129054c, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0.25802058
-      objectReference: {fileID: 0}
-    - target: {fileID: 2954433451875422049, guid: 739531dc48e2751429502ea2a129054c, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 0.1492524
-      objectReference: {fileID: 0}
     - target: {fileID: 6622082067068148848, guid: 739531dc48e2751429502ea2a129054c, type: 3}
       propertyPath: m_Name
       value: Player (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8146057175243370445, guid: 739531dc48e2751429502ea2a129054c, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0.8301887
-      objectReference: {fileID: 0}
-    - target: {fileID: 8146057175243370445, guid: 739531dc48e2751429502ea2a129054c, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0.21351437
-      objectReference: {fileID: 0}
-    - target: {fileID: 8146057175243370445, guid: 739531dc48e2751429502ea2a129054c, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 0.16838734
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
