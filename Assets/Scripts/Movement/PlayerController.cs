@@ -30,6 +30,9 @@ namespace SunkenSouls
 
         void Start()
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
             canTakeDamage = true;
 
             object_rigidBody = GetComponent<Rigidbody>();
@@ -132,26 +135,25 @@ namespace SunkenSouls
 
         private void UpdateHealthData()
         {
-
-            if (playerHealth == 0)
+            if (canTakeDamage)
             {
-                if (lives > 0)
+                if (playerHealth == 0)
                 {
-                    if (canTakeDamage)
+                    if (lives > 0)
                     {
-                        canTakeDamage = false;
-
                         deathCutsceneDirector.Play();
                         StartCoroutine(LoadSceneAfterCutscene(deathCutsceneDirector, SceneManager.GetActiveScene().buildIndex));
 
                         lives -= 1;
                         LivesLeftText.instance.SetText(lives);
                     }
-                }
-                else if (lives == 0)
-                {
-                    gameOverCutsceneDirector.Play();
-                    StartCoroutine(LoadSceneAfterCutscene(gameOverCutsceneDirector, 0));
+                    else
+                    {
+                        gameOverCutsceneDirector.Play();
+                        StartCoroutine(LoadSceneAfterCutscene(gameOverCutsceneDirector, 0));
+                    }
+
+                    canTakeDamage = false;
                 }
             }
         }

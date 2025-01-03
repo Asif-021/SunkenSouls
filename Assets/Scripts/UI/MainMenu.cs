@@ -14,7 +14,13 @@ namespace SunkenSouls
         [SerializeField] Slider difficultySlider;
 
         public static DifficultyLevel difficulty;
-        
+
+        private void Start()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         public void StartGame()
         {
             SetPlayerLives();
