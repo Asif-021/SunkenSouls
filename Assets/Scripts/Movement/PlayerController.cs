@@ -63,6 +63,9 @@ namespace SunkenSouls
                         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                     }
                     break;
+                case "Treasure":
+                    FinalLevelManager.instance.DeleteFinalLevelManager();
+                    break;
             }
         }
 
