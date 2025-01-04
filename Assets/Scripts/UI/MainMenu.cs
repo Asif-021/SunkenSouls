@@ -27,6 +27,9 @@ namespace SunkenSouls
             HealthBar.currentHealth = 100;
             int level = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(level + 1);
+
+            // SceneManager.LoadScene(level + 4);
+            // FOR TESTING^^^
         }
 
         private void SetPlayerLives()

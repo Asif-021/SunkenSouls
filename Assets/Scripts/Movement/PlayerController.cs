@@ -19,6 +19,7 @@ namespace SunkenSouls
 
         public PlayableDirector deathCutsceneDirector;
         public PlayableDirector gameOverCutsceneDirector;
+        public PlayableDirector levelFinishedCutsceneDirector;
 
         public static PlayerController instance;
 
@@ -60,7 +61,12 @@ namespace SunkenSouls
                 case "NextLevelDoor":
                     if (CoinsCollectedText.instance.GetCoinsToCollect() == 0)
                     {
-                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                        
+                        
+                        StartCoroutine(LoadSceneAfterCutscene(levelFinishedCutsceneDirector, SceneManager.GetActiveScene().buildIndex + 1)); //!!!
+
+                        // StartCoroutine(LoadSceneAfterCutscene(levelFinishedCutsceneDirector, SceneManager.GetActiveScene().buildIndex - 2));
+                        // FOR TESTING^^^
                     }
                     break;
                 case "Treasure":
