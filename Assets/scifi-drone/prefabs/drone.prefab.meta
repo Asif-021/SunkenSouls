@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5bd685975a63f0542b3ac964a6f0f778
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 214089
+  packageName: Sci-Fi-Drone
+  packageVersion: 1.0
+  assetPath: Assets/scifi-drone/prefabs/drone.prefab
+  uploadId: 627365
