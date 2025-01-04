@@ -24,6 +24,7 @@ namespace SunkenSouls
         {
             currentHealth -= damage;
             currentHealth = Mathf.Max(0, currentHealth);
+            currentHealth = Mathf.Min(100, currentHealth);
             SetHealth();
         }
 

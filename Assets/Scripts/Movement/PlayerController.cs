@@ -84,6 +84,10 @@ namespace SunkenSouls
                     CoinsCollectedText.instance.UpdateCoinsCollected();
                     other.gameObject.SetActive(false);
                     break;
+                case "Battery":
+                    DealDamage(-10);
+                    Destroy(other.gameObject);
+                    break;
             }
         }
 

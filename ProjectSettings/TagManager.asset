@@ -11,6 +11,7 @@ TagManager:
   - Spears
   - NextLevelDoor
   - Enemy
+  - Battery
   layers:
   - Default
   - TransparentFX
