@@ -50844,6 +50844,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7601542575290221562, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0.17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57156,6 +57160,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2856112212326120951, guid: df9554006e8c14e6dbfdc672c82ac808, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856112212326120951, guid: df9554006e8c14e6dbfdc672c82ac808, type: 3}
+      propertyPath: m_BaseOffset
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2944927285417701498, guid: df9554006e8c14e6dbfdc672c82ac808, type: 3}
