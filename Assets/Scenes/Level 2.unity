@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -63047,6 +63047,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2856112212326120951, guid: df9554006e8c14e6dbfdc672c82ac808, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2944927285417701498, guid: df9554006e8c14e6dbfdc672c82ac808, type: 3}
       propertyPath: m_Name
       value: ExplosivefishV2
@@ -63057,7 +63061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3673438324963786009, guid: df9554006e8c14e6dbfdc672c82ac808, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.51
+      value: 4.04
       objectReference: {fileID: 0}
     - target: {fileID: 3673438324963786009, guid: df9554006e8c14e6dbfdc672c82ac808, type: 3}
       propertyPath: m_LocalPosition.y
@@ -63065,7 +63069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3673438324963786009, guid: df9554006e8c14e6dbfdc672c82ac808, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 119.17
+      value: 114.51
       objectReference: {fileID: 0}
     - target: {fileID: 3673438324963786009, guid: df9554006e8c14e6dbfdc672c82ac808, type: 3}
       propertyPath: m_LocalRotation.w
@@ -63373,7 +63377,7 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 8324430003534477995, guid: adb70368afe8c43418a544f05096dffe, type: 2}
-    value: {fileID: 1802916517}
+    value: {fileID: 0}
   - key: {fileID: 5580345160239044840, guid: adb70368afe8c43418a544f05096dffe, type: 2}
     value: {fileID: 154391767}
   - key: {fileID: 6080782015795765334, guid: adb70368afe8c43418a544f05096dffe, type: 2}
@@ -102525,11 +102529,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6622082067068148848, guid: 739531dc48e2751429502ea2a129054c, type: 3}
   m_PrefabInstance: {fileID: 1802916515}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1802916517 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 699550118757652432, guid: 739531dc48e2751429502ea2a129054c, type: 3}
-  m_PrefabInstance: {fileID: 1802916515}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1810042102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119727,6 +119726,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2856112212326120951, guid: df9554006e8c14e6dbfdc672c82ac808, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856112212326120951, guid: df9554006e8c14e6dbfdc672c82ac808, type: 3}
+      propertyPath: m_BaseOffset
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2944927285417701498, guid: df9554006e8c14e6dbfdc672c82ac808, type: 3}
