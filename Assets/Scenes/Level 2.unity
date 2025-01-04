@@ -85871,6 +85871,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2978410083464385332, guid: 9a9a226247eea40a7b5fbe3167ac6567, type: 3}
+      propertyPath: JellyFishGuide
+      value: 
+      objectReference: {fileID: 1540323538}
     - target: {fileID: 3909267992519934772, guid: 9a9a226247eea40a7b5fbe3167ac6567, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -90722,7 +90726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffaa1fab2f3fc7340bbd0e821112135f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
+  playerTransform: {fileID: 158787838}
   fishLight: {fileID: 1299268182}
   distanceFromPlayer: 2
   heightOffset: 1

@@ -1247,7 +1247,7 @@ Transform:
   - {fileID: 266006433176299776}
   - {fileID: 4293738039362312607}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &290974128014406238
 MonoBehaviour:
@@ -1320,6 +1320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 3000
   movementSpeed: 100
+  JellyFishGuide: {fileID: 5118443864449842118, guid: c8c78fbdeebf09e428fe04a6ce895ffd, type: 3}
   deathCutsceneDirector: {fileID: 0}
   gameOverCutsceneDirector: {fileID: 0}
   levelFinishedCutsceneDirector: {fileID: 0}

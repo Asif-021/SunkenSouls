@@ -12,6 +12,7 @@ namespace SunkenSouls
     {
         [SerializeField] float jumpForce;
         [SerializeField] float movementSpeed;
+        [SerializeField] GameObject JellyFishGuide;
 
         private Rigidbody object_rigidBody;
         private Vector2 movementVector;
@@ -33,6 +34,11 @@ namespace SunkenSouls
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+
+            if (MainMenu.difficulty == DifficultyLevel.HARD)
+            {
+                JellyFishGuide.SetActive(false);
+            }
 
             canTakeDamage = true;
 
