@@ -50750,6 +50750,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3734951571487112882, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.538
+      objectReference: {fileID: 0}
     - target: {fileID: 7190563091157262593, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
       propertyPath: player
       value: 
@@ -50761,13 +50765,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4079951230140867592, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1379392301}
   m_SourcePrefab: {fileID: 100100000, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
 --- !u!4 &1379392299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 148770899453199169, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
   m_PrefabInstance: {fileID: 1379392298}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1379392300 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4079951230140867592, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
+  m_PrefabInstance: {fileID: 1379392298}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1379392301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379392300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0109822f69a944e299706a2e0591bd62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfPatrolPoints: 3
+  patrolAreaSize: {x: 5, y: 0, z: 5}
+  waitTimeAtPoint: 1
+  sightRange: 5
+  patrolSpeed: 3
+  chaseSpeed: 1
+  player: {fileID: 294274950}
 --- !u!1 &1390459561
 GameObject:
   m_ObjectHideFlags: 0
@@ -54035,13 +54066,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4079951230140867592, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1587781808}
   m_SourcePrefab: {fileID: 100100000, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
 --- !u!4 &1587781806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 148770899453199169, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
   m_PrefabInstance: {fileID: 1587781805}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1587781807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4079951230140867592, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
+  m_PrefabInstance: {fileID: 1587781805}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1587781808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587781807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0109822f69a944e299706a2e0591bd62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfPatrolPoints: 3
+  patrolAreaSize: {x: 5, y: 0, z: 5}
+  waitTimeAtPoint: 1
+  sightRange: 5
+  patrolSpeed: 3
+  chaseSpeed: 1
+  player: {fileID: 294274950}
 --- !u!1 &1592542735
 GameObject:
   m_ObjectHideFlags: 0
