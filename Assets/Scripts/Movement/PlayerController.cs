@@ -119,6 +119,11 @@ namespace SunkenSouls
         void UpdatePosition()
         {
             Vector3 movementDirection = new Vector3(movementVector.x, 0.0f, movementVector.y);
+            if (transform.eulerAngles.x < 340 && transform.eulerAngles.x > 20)
+            {
+                movementDirection = new Vector3(0f, 0f, 0f);
+            }
+
             object_rigidBody.AddRelativeForce(movementDirection * movementSpeed, ForceMode.Force);
         }
 
