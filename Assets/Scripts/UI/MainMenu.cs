@@ -14,6 +14,11 @@ namespace SunkenSouls
         [SerializeField] Slider difficultySlider;
         [SerializeField] AudioClip hoverSound;
 
+        [SerializeField] GameObject EasyModeDescriptor;
+        [SerializeField] GameObject HardModeDescriptor;
+
+        [SerializeField] Slider DifficultySelector;
+
         public static DifficultyLevel difficulty;
         private AudioSource object_audioSource;
 
@@ -61,6 +66,43 @@ namespace SunkenSouls
         public void HoverSound()
         {
             object_audioSource.PlayOneShot(hoverSound);
+        }
+
+        public void EasyModeSelected()
+        {
+            HoverSound();
+            EasyModeDescriptor.SetActive(true);
+        }
+
+        public void HardModeSelected()
+        {
+            HoverSound();
+            HardModeDescriptor.SetActive(true);
+        }
+
+        public void ExitModeButtons()
+        {
+            if (EasyModeDescriptor.activeSelf)
+            {
+                EasyModeDescriptor.SetActive(false);
+            }
+
+            if (HardModeDescriptor.activeSelf)
+            {
+                HardModeDescriptor.SetActive(false);
+            }
+        }
+
+        public void SetHardMode()
+        {
+            object_audioSource.Play();
+            DifficultySelector.value = 1;
+        }
+
+        public void SetEasyMode()
+        {
+            object_audioSource.Play();
+            DifficultySelector.value = 0;
         }
     }
 }
