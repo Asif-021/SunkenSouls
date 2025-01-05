@@ -85875,6 +85875,14 @@ PrefabInstance:
       propertyPath: JellyFishGuide
       value: 
       objectReference: {fileID: 1540323538}
+    - target: {fileID: 2978410083464385332, guid: 9a9a226247eea40a7b5fbe3167ac6567, type: 3}
+      propertyPath: deathCutsceneDirector
+      value: 
+      objectReference: {fileID: 1744933158}
+    - target: {fileID: 2978410083464385332, guid: 9a9a226247eea40a7b5fbe3167ac6567, type: 3}
+      propertyPath: gameOverCutsceneDirector
+      value: 
+      objectReference: {fileID: 635889660}
     - target: {fileID: 3909267992519934772, guid: 9a9a226247eea40a7b5fbe3167ac6567, type: 3}
       propertyPath: m_RootOrder
       value: 13

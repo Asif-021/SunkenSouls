@@ -22,8 +22,6 @@ namespace SunkenSouls
         public PlayableDirector gameOverCutsceneDirector;
         public PlayableDirector levelFinishedCutsceneDirector;
         public PlayableDirector TreasureCutsceneDirector;
-        public PlayableDirector EasyModeCutsceneDirector;
-        public PlayableDirector HardModeCutsceneDirector;
 
         public static PlayerController instance;
 
@@ -34,6 +32,7 @@ namespace SunkenSouls
         private bool canTakeDamage;
 
         private AudioSource object_audioSource;
+
 
         void Start()
         {
@@ -59,15 +58,9 @@ namespace SunkenSouls
             CoinsCollectedText.instance.SetCoinsRequired(GameObject.FindGameObjectsWithTag("GoldCoin_Collectible").Length);
 
             instance = this;
-
-            //if (MainMenu.difficulty == DifficultyLevel.HARD)
-            //{
-            //    StartCoroutine(PlayInitialCutscene(HardModeCutsceneDirector));
-            //}
-            //else
-            //{
-            //    StartCoroutine(PlayInitialCutscene(EasyModeCutsceneDirector));
-            //}
+            
+            
+            
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -221,15 +214,8 @@ namespace SunkenSouls
             SceneManager.LoadScene(sceneIndex);
         }
 
-        //private IEnumerator PlayInitialCutscene(PlayableDirector director)
-        //{
-        //    this.enabled = false; 
-        //    director.Play();
+        
 
-        //    // Wait for the cutscene to finish
-        //    yield return new WaitForSeconds((float)director.duration);
-
-        //    this.enabled = true;
-        //}
+        
     }
 }
