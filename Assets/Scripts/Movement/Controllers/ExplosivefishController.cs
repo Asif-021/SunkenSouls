@@ -16,14 +16,11 @@ namespace SunkenSouls
         public float warningDuration = 2f;
         public float explosionRadius = 3f;
         public float explosionTriggerRange = 2f;
-        public float cooldownDuration = 5f;
-        public float lostPlayerDuration = 3f;
         public Transform player;
         public GameObject explosionEffectPrefab;
 
-        private bool isExploded = false;
-        private float timeSincePlayerSeen = 0f;
         private PatrolController patrolController;
+        private AudioSource audioSource;
 
         void Start()
         {
@@ -33,6 +30,14 @@ namespace SunkenSouls
             }
 
             patrolController = GetComponent<PatrolController>();
+
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                Debug.LogError("AudioSource component is missing!");
+            }
+
+            audioSource.playOnAwake = false;
         }
 
         void Update()
@@ -49,7 +54,6 @@ namespace SunkenSouls
 
                 case FishState.Warning:
                 case FishState.Exploding:
-                case FishState.Cooldown:
                     break;
             }
         }
@@ -86,37 +90,6 @@ namespace SunkenSouls
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             transform.position += direction * chaseSpeed * Time.deltaTime;
-
-            HandleLostPlayer(direction, distanceToPlayer);
-        }
-
-        private void HandleLostPlayer(Vector3 directionToPlayer, float distanceToPlayer)
-        {
-            float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-
-            if (distanceToPlayer > detectionRange || angleToPlayer > detectionAngle / 2f)
-            {
-                timeSincePlayerSeen += Time.deltaTime;
-
-                if (timeSincePlayerSeen >= lostPlayerDuration)
-                {
-                    ResumePatrolling();
-                }
-            }
-            else
-            {
-                timeSincePlayerSeen = 0f;
-            }
-        }
-
-        private void ResumePatrolling()
-        {
-            currentState = FishState.Idle;
-
-            if (patrolController != null)
-            {
-                patrolController.ResumePatrolling();
-            }
         }
 
         private IEnumerator WarningPhase()
@@ -127,6 +100,7 @@ namespace SunkenSouls
             Vector3 originalScale = transform.localScale;
             Vector3 warningScale = originalScale * 1.5f;
 
+            // Perform the "charge-up" scaling animation
             while (elapsed < warningDuration)
             {
                 transform.localScale = Vector3.Lerp(originalScale, warningScale, elapsed / warningDuration);
@@ -134,11 +108,11 @@ namespace SunkenSouls
                 yield return null;
             }
 
-            transform.localScale = warningScale;
-            StartCoroutine(Explode());
+            transform.localScale = warningScale; // Ensure final scale is set
+            TriggerExplosion();
         }
 
-        private IEnumerator Explode()
+        private void TriggerExplosion()
         {
             currentState = FishState.Exploding;
 
@@ -148,27 +122,35 @@ namespace SunkenSouls
                 Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
             }
 
+            // Play the explosion sound
+            if (audioSource != null && audioSource.clip != null)
+            {
+                audioSource.Play();
+            }
+
             // Check if the player is within the explosion radius
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
             if (distanceToPlayer <= explosionRadius)
             {
-                // Determine damage based on difficulty
                 int explosionDamage = MainMenu.difficulty == DifficultyLevel.HARD ? 65 : 40;
-
-                // Deal damage to the player
                 PlayerController.instance.DealDamage(explosionDamage);
             }
 
-            // Disable the fish temporarily
-            gameObject.SetActive(false);
+            // Destroy all child objects but keep the parent
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
 
-            // Wait for the cooldown duration before resetting
-            yield return new WaitForSeconds(cooldownDuration);
+            // Optionally, disable the collider if present
+            Collider collider = GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
 
-            isExploded = false;
-            gameObject.SetActive(true);
-            transform.localScale = Vector3.one;
-            ResumePatrolling();
+            // Destroy the parent after the sound has finished playing (optional)
+            Destroy(gameObject, audioSource.clip.length);
         }
 
         void OnDrawGizmosSelected()
