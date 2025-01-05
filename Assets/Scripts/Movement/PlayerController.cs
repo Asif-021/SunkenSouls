@@ -60,14 +60,14 @@ namespace SunkenSouls
 
             instance = this;
 
-            if (MainMenu.difficulty == DifficultyLevel.HARD)
-            {
-                StartCoroutine(PlayInitialCutscene(HardModeCutsceneDirector));
-            }
-            else
-            {
-                StartCoroutine(PlayInitialCutscene(EasyModeCutsceneDirector));
-            }
+            //if (MainMenu.difficulty == DifficultyLevel.HARD)
+            //{
+            //    StartCoroutine(PlayInitialCutscene(HardModeCutsceneDirector));
+            //}
+            //else
+            //{
+            //    StartCoroutine(PlayInitialCutscene(EasyModeCutsceneDirector));
+            //}
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -221,15 +221,15 @@ namespace SunkenSouls
             SceneManager.LoadScene(sceneIndex);
         }
 
-        private IEnumerator PlayInitialCutscene(PlayableDirector director)
-        {
-            this.enabled = false; 
-            director.Play();
+        //private IEnumerator PlayInitialCutscene(PlayableDirector director)
+        //{
+        //    this.enabled = false; 
+        //    director.Play();
 
-            // Wait for the cutscene to finish
-            yield return new WaitForSeconds((float)director.duration);
+        //    // Wait for the cutscene to finish
+        //    yield return new WaitForSeconds((float)director.duration);
 
-            this.enabled = true;
-        }
+        //    this.enabled = true;
+        //}
     }
 }
