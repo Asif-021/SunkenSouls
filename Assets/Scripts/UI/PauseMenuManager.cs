@@ -9,15 +9,26 @@ namespace SunkenSouls
     {
         [SerializeField] GameObject HUD;
         [SerializeField] GameObject PauseMenu;
+        [SerializeField] AudioClip hoverSound;
+
+        private AudioSource object_audioSource;
+
+        private void Start()
+        {
+            object_audioSource = GetComponent<AudioSource>();
+        }
 
         public void MainMenu()
         {
+            object_audioSource.Play();
             Time.timeScale = 1f;
             SceneManager.LoadScene(0);
         }
 
         public void Continue()
         {
+            object_audioSource.Play();
+
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
@@ -25,6 +36,11 @@ namespace SunkenSouls
 
             HUD.SetActive(true);
             PauseMenu.SetActive(false);
+        }
+
+        public void HoverSound()
+        {
+            object_audioSource.PlayOneShot(hoverSound);
         }
     }
 }

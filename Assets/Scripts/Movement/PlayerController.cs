@@ -33,6 +33,8 @@ namespace SunkenSouls
 
         private bool canTakeDamage;
 
+        private AudioSource object_audioSource;
+
         void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -43,6 +45,7 @@ namespace SunkenSouls
                 JellyFishGuide.SetActive(false);
             }
             
+            object_audioSource = GetComponent<AudioSource>();
 
             canTakeDamage = true;
 
@@ -56,7 +59,7 @@ namespace SunkenSouls
             CoinsCollectedText.instance.SetCoinsRequired(GameObject.FindGameObjectsWithTag("GoldCoin_Collectible").Length);
 
             instance = this;
-            
+
             if (MainMenu.difficulty == DifficultyLevel.HARD)
             {
                 StartCoroutine(PlayInitialCutscene(HardModeCutsceneDirector));
@@ -134,6 +137,23 @@ namespace SunkenSouls
         {
             // temporarily accessing the main camera until Unity support gets back (as ssignign the camera to a serializeable field does not give its rotation)
             transform.rotation = Camera.main.transform.rotation;
+            PlaySound();
+        }
+
+        private void PlaySound()
+        {
+            if (Mathf.Abs(object_rigidBody.velocity.x) - 0 > 0.1f || Mathf.Abs(object_rigidBody.velocity.y) - 0 > 0.1f || Mathf.Abs(object_rigidBody.velocity.z) - 0 > 0.1f)
+            {
+                if (!object_audioSource.isPlaying)
+                {
+                    object_audioSource.Play();
+                }
+            }
+
+            else
+            {
+                object_audioSource.Stop();
+            }
         }
 
         private void FixedUpdate()
@@ -149,7 +169,6 @@ namespace SunkenSouls
             {
                 movementDirection = new Vector3(0f, 0f, 0f);
             }
-
             object_rigidBody.AddRelativeForce(movementDirection * movementSpeed, ForceMode.Force);
         }
 
@@ -177,6 +196,7 @@ namespace SunkenSouls
             {
                 if (playerHealth == 0)
                 {
+                    object_audioSource.Stop();
                     if (lives > 0)
                     {
                         StartCoroutine(LoadSceneAfterCutscene(deathCutsceneDirector, SceneManager.GetActiveScene().buildIndex));

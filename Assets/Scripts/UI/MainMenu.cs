@@ -12,17 +12,23 @@ namespace SunkenSouls
     public class MainMenu : MonoBehaviour
     {
         [SerializeField] Slider difficultySlider;
+        [SerializeField] AudioClip hoverSound;
 
         public static DifficultyLevel difficulty;
+        private AudioSource object_audioSource;
 
         private void Start()
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            object_audioSource = GetComponent<AudioSource>();
         }
 
         public void StartGame()
         {
+            object_audioSource.Play();
+
             SetPlayerLives();
             HealthBar.currentHealth = 100;
             int level = SceneManager.GetActiveScene().buildIndex;
@@ -48,7 +54,13 @@ namespace SunkenSouls
 
         public void QuitApplication()
         {
+            object_audioSource.Play();
             Application.Quit();
+        }
+
+        public void HoverSound()
+        {
+            object_audioSource.PlayOneShot(hoverSound);
         }
     }
 }
