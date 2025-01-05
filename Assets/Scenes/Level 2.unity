@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -50057,15 +50057,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9074496693800466075, guid: 40846da4163796b4492095d84d98e6e6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.32
+      value: 2.72
       objectReference: {fileID: 0}
     - target: {fileID: 9074496693800466075, guid: 40846da4163796b4492095d84d98e6e6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.78
+      value: 53.921
       objectReference: {fileID: 0}
     - target: {fileID: 9074496693800466075, guid: 40846da4163796b4492095d84d98e6e6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.2
+      value: 300.4859
       objectReference: {fileID: 0}
     - target: {fileID: 9074496693800466075, guid: 40846da4163796b4492095d84d98e6e6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -63377,7 +63377,7 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 8324430003534477995, guid: adb70368afe8c43418a544f05096dffe, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1346016407}
   - key: {fileID: 5580345160239044840, guid: adb70368afe8c43418a544f05096dffe, type: 2}
     value: {fileID: 154391767}
   - key: {fileID: 6080782015795765334, guid: adb70368afe8c43418a544f05096dffe, type: 2}
@@ -85928,6 +85928,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a9a226247eea40a7b5fbe3167ac6567, type: 3}
+--- !u!95 &1346016407 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3187009238331480176, guid: 9a9a226247eea40a7b5fbe3167ac6567, type: 3}
+  m_PrefabInstance: {fileID: 1346016406}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1353882713
 GameObject:
   m_ObjectHideFlags: 0

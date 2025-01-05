@@ -21,6 +21,9 @@ namespace SunkenSouls
         public PlayableDirector deathCutsceneDirector;
         public PlayableDirector gameOverCutsceneDirector;
         public PlayableDirector levelFinishedCutsceneDirector;
+        public PlayableDirector TreasureCutsceneDirector;
+        public PlayableDirector EasyModeCutsceneDirector;
+        public PlayableDirector HardModeCutsceneDirector;
 
         public static PlayerController instance;
 
@@ -39,6 +42,7 @@ namespace SunkenSouls
             {
                 JellyFishGuide.SetActive(false);
             }
+            
 
             canTakeDamage = true;
 
@@ -52,6 +56,15 @@ namespace SunkenSouls
             CoinsCollectedText.instance.SetCoinsRequired(GameObject.FindGameObjectsWithTag("GoldCoin_Collectible").Length);
 
             instance = this;
+            
+            if (MainMenu.difficulty == DifficultyLevel.HARD)
+            {
+                StartCoroutine(PlayInitialCutscene(HardModeCutsceneDirector));
+            }
+            else
+            {
+                StartCoroutine(PlayInitialCutscene(EasyModeCutsceneDirector));
+            }
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -77,6 +90,7 @@ namespace SunkenSouls
                     break;
                 case "Treasure":
                     FinalLevelManager.instance.DeleteFinalLevelManager();
+                    StartCoroutine(LoadSceneAfterCutscene(TreasureCutsceneDirector, 0));
                     break;
             }
         }
@@ -185,6 +199,17 @@ namespace SunkenSouls
             director.Play();
             yield return new WaitForSeconds((float)director.duration);
             SceneManager.LoadScene(sceneIndex);
+        }
+
+        private IEnumerator PlayInitialCutscene(PlayableDirector director)
+        {
+            this.enabled = false; 
+            director.Play();
+
+            // Wait for the cutscene to finish
+            yield return new WaitForSeconds((float)director.duration);
+
+            this.enabled = true;
         }
     }
 }
