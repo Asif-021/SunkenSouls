@@ -62,15 +62,17 @@ namespace SunkenSouls
             if (nearestCoin != null)
             {
                 currentState = FishState.Guiding;
+                return;
             }
 
             // Check for nearby enemies
             FindNearestEnemy();
-            if (nearestEnemy != null && Vector3.Distance(transform.position, nearestEnemy.position) <= warningRange)
+            if (nearestEnemy != null) // Enter Warning state only if an enemy is detected
             {
                 currentState = FishState.Warning;
             }
         }
+
 
         private void GuidingBehaviour()
         {
@@ -102,19 +104,27 @@ namespace SunkenSouls
 
         private void WarningBehaviour()
         {
-            FollowPlayer(); // Continue following the player
+            FollowPlayer();
 
-            fishLight.color = Color.red; // Change light to red as a warning
-            Debug.Log("Warning: Enemy nearby!");
-
-            // Check if the enemy is still in range
-            FindNearestEnemy();
-            if (nearestEnemy == null || Vector3.Distance(transform.position, nearestEnemy.position) > warningRange)
+            if (fishLight != null)
             {
-                fishLight.color = Color.white; // Reset light to default
+                fishLight.color = Color.red;
+            }
+
+            Debug.Log("Warning: Enemy detected nearby!");
+
+            FindNearestEnemy();
+            if (nearestEnemy == null)
+            {
+                Debug.Log("Enemy no longer in range. Returning to Idle state.");
+                if (fishLight != null)
+                {
+                    fishLight.color = Color.white;
+                }
                 currentState = FishState.Idle;
             }
         }
+
 
 
         private void FollowPlayer()
@@ -155,6 +165,12 @@ namespace SunkenSouls
                     shortestDistance = distanceToEnemy;
                     nearestEnemy = enemy.transform;
                 }
+            }
+
+            // Clear nearestEnemy if no enemy is within range
+            if (nearestEnemy == null || shortestDistance > warningRange)
+            {
+                nearestEnemy = null;
             }
         }
 
