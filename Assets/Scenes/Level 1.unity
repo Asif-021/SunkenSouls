@@ -81674,8 +81674,8 @@ MonoBehaviour:
   heightOffset: 1
   goldCoinTag: GoldCoin_Collectible
   enemyTag: Enemy
-  coinDetectionRange: 30
-  warningRange: 10
+  coinDetectionRange: 25
+  warningRange: 8
 --- !u!1001 &1428009324430059195
 PrefabInstance:
   m_ObjectHideFlags: 0
