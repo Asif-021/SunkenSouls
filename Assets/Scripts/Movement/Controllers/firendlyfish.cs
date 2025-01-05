@@ -76,10 +76,12 @@ namespace SunkenSouls
         {
             FollowPlayer();
 
-            // Rotate to face the nearest coin
+            // Smoothly rotate to face the nearest coin
             if (nearestCoin != null)
             {
-                transform.LookAt(nearestCoin);
+                Vector3 directionToCoin = (nearestCoin.position - transform.position).normalized;
+                Quaternion targetRotation = Quaternion.LookRotation(directionToCoin);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f); // Adjust 5f for rotation speed
             }
 
             // If no coins are nearby, return to Idle state
@@ -96,6 +98,7 @@ namespace SunkenSouls
                 currentState = FishState.Warning;
             }
         }
+
 
         private void WarningBehaviour()
         {
