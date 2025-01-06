@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -89406,7 +89406,7 @@ PrefabInstance:
     - target: {fileID: 7190563091157262593, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 158787838}
     - target: {fileID: 7595673988034460308, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
       propertyPath: m_Name
       value: PufferfishV2 (1)
@@ -89451,7 +89451,7 @@ MonoBehaviour:
   sightRange: 5
   patrolSpeed: 3
   chaseSpeed: 1
-  player: {fileID: 0}
+  player: {fileID: 1346016408}
 --- !u!1 &1501964561
 GameObject:
   m_ObjectHideFlags: 0
@@ -90637,7 +90637,7 @@ PrefabInstance:
     - target: {fileID: 7190563091157262593, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 158787838}
     - target: {fileID: 7595673988034460308, guid: 7e18a7e4beb6041819ce0309ab0d753e, type: 3}
       propertyPath: m_Name
       value: PufferfishV2
@@ -90682,7 +90682,7 @@ MonoBehaviour:
   sightRange: 5
   patrolSpeed: 3
   chaseSpeed: 1
-  player: {fileID: 0}
+  player: {fileID: 1346016408}
 --- !u!1 &1537147597
 GameObject:
   m_ObjectHideFlags: 0
