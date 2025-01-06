@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d6f537998ae71c3bc4eca00fda1eadac488fcc874895e127a3ec4571ac91e3e1
-size 397
+{
+    "m_Dictionary": {
+        "m_DictionaryValues": [
+            {
+                "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "buildOutputDirList",
+                "value": "{\"m_Value\":\"C:/GitHub/SunkenSouls/build;/Users/asifahmed/Documents/GitHub/SunkenSouls/build;;;;;;;;\"}"
+            }
+        ]
+    }
+}
