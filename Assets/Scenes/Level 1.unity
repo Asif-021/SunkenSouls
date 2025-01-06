@@ -84940,6 +84940,10 @@ PrefabInstance:
       propertyPath: gameOverCutsceneDirector
       value: 
       objectReference: {fileID: 133855985}
+    - target: {fileID: 2978410083464385332, guid: 9a9a226247eea40a7b5fbe3167ac6567, type: 3}
+      propertyPath: levelFinishedCutsceneDirector
+      value: 
+      objectReference: {fileID: 258085703}
     - target: {fileID: 3909267992519934772, guid: 9a9a226247eea40a7b5fbe3167ac6567, type: 3}
       propertyPath: m_RootOrder
       value: 13
